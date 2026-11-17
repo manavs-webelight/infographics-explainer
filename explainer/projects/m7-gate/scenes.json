@@ -1,0 +1,245 @@
+{
+  "title": "Code walkthrough gate",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Two Numbers, One Pass",
+      "narration": "Watch a tiny search find its pair in a single pass through the list, line by line.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 4.12,
+      "durationInFrames": 158
+    },
+    {
+      "type": "code",
+      "title": "Finding a pair in one pass",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "steps": [
+        {
+          "narration": "The function takes a list of numbers and a target total, and it promises to find a matching pair.",
+          "lines": [
+            1,
+            2
+          ],
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 5.88,
+          "startFrame": 16,
+          "frames": 177
+        },
+        {
+          "narration": "Now the loop walks through the list one number at a time, giving each of them a turn.",
+          "lines": [
+            3,
+            4
+          ],
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 4.36,
+          "startFrame": 199,
+          "frames": 131
+        },
+        {
+          "narration": "Here is the heart of the trick: it checks whether that needed partner has been seen before.",
+          "lines": [
+            5,
+            6
+          ],
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 4.52,
+          "startFrame": 336,
+          "frames": 136
+        },
+        {
+          "narration": "Otherwise the current number joins the seen set, and the loop simply moves to the next one.",
+          "lines": [
+            7
+          ],
+          "audioFile": "audio/scene-1-step-3.wav",
+          "audioSeconds": 4.28,
+          "startFrame": 478,
+          "frames": 129
+        },
+        {
+          "narration": "If the whole list is finished with no partner found, the function honestly returns None.",
+          "lines": [
+            8
+          ],
+          "audioFile": "audio/scene-1-step-4.wav",
+          "audioSeconds": 5.08,
+          "startFrame": 613,
+          "frames": 153
+        }
+      ],
+      "tokens": [
+        [
+          [
+            "def",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "pair_sum",
+            "#B392F0"
+          ],
+          [
+            "(nums, target):",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    seen ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "set",
+            "#79B8FF"
+          ],
+          [
+            "()",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "for",
+            "#F97583"
+          ],
+          [
+            " n ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " nums:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        need ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " target ",
+            "#E1E4E8"
+          ],
+          [
+            "-",
+            "#F97583"
+          ],
+          [
+            " n",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " need ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " seen:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " (need, n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        seen.add(n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "None",
+            "#79B8FF"
+          ]
+        ]
+      ],
+      "codeHash": "3829963754b97c6c",
+      "durationInFrames": 784
+    },
+    {
+      "type": "bullets",
+      "title": "Why it works",
+      "steps": [
+        {
+          "item": "One pass, steady work",
+          "narration": "Each number is checked exactly once, so the effort grows in step with the list size.",
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 5,
+          "startFrame": 16,
+          "frames": 150
+        },
+        {
+          "item": "Memory buys speed",
+          "narration": "The seen set remembers past numbers, trading a little memory for instant lookups.",
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 4.36,
+          "startFrame": 172,
+          "frames": 131
+        }
+      ],
+      "durationInFrames": 333
+    }
+  ]
+}

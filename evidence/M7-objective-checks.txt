@@ -1,0 +1,30 @@
+  line 1: highlight=True bar=True expected=True OK
+  line 2: highlight=True bar=True expected=True OK
+  line 3: highlight=False bar=False expected=False OK
+  line 4: highlight=False bar=False expected=False OK
+  line 5: highlight=False bar=False expected=False OK
+  line 6: highlight=False bar=False expected=False OK
+  line 7: highlight=False bar=False expected=False OK
+  line 8: highlight=False bar=False expected=False OK
+STEP 1 (def + seen): frame=192 active=[1, 2] -> PASS
+  line 1: highlight=False bar=False expected=False OK
+  line 2: highlight=False bar=False expected=False OK
+  line 3: highlight=False bar=False expected=False OK
+  line 4: highlight=False bar=False expected=False OK
+  line 5: highlight=True bar=True expected=True OK
+  line 6: highlight=True bar=True expected=True OK
+  line 7: highlight=False bar=False expected=False OK
+  line 8: highlight=False bar=False expected=False OK
+STEP 3 (the if + return): frame=512 active=[5, 6] -> PASS
+  line 1: highlight=False bar=False expected=False OK
+  line 2: highlight=False bar=False expected=False OK
+  line 3: highlight=False bar=False expected=False OK
+  line 4: highlight=False bar=False expected=False OK
+  line 5: highlight=False bar=False expected=False OK
+  line 6: highlight=False bar=False expected=False OK
+  line 7: highlight=False bar=False expected=False OK
+  line 8: highlight=True bar=True expected=True OK
+STEP 5 (return None): frame=789 active=[8] -> PASS
+fonts: heading 64px, code 34px mono, line numbers 28px -> measured minimum 28px
+OCR active line 8: return None
+OCR step-1 frame: —, | Finding | a | pair | in | one | pass | | | 1 | def | pair_sum(nums, | target): | = | 

@@ -1,0 +1,85 @@
+[
+  {
+    "scene": 0,
+    "voice": "marius",
+    "audioSeconds": 4.12,
+    "audioFrames": 124,
+    "durationInFrames": 158,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 1,
+    "voice": "marius",
+    "audioSeconds": 24.119999999999997,
+    "audioFrames": 750,
+    "durationInFrames": 784,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 5.88,
+        "startFrame": 16,
+        "frames": 177,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.36,
+        "startFrame": 199,
+        "frames": 131,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 4.52,
+        "startFrame": 336,
+        "frames": 136,
+        "cached": true
+      },
+      {
+        "step": 3,
+        "audioSeconds": 4.28,
+        "startFrame": 478,
+        "frames": 129,
+        "cached": true
+      },
+      {
+        "step": 4,
+        "audioSeconds": 5.08,
+        "startFrame": 613,
+        "frames": 153,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 2,
+    "voice": "marius",
+    "audioSeconds": 9.36,
+    "audioFrames": 287,
+    "durationInFrames": 333,
+    "tail": 30,
+    "marginFrames": 30,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 5,
+        "startFrame": 16,
+        "frames": 150,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.36,
+        "startFrame": 172,
+        "frames": 131,
+        "cached": true
+      }
+    ]
+  }
+]

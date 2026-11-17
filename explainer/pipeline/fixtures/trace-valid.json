@@ -1,0 +1,42 @@
+{
+  "title": "Trace fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Under The Hood",
+      "narration": "Same function, new eyes: watch the variables change one recorded step at a time."
+    },
+    {
+      "type": "trace",
+      "title": "Watch it run: target ten",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "source": "snippets/pair_sum.py",
+      "entry": "pair_sum",
+      "args": "[3, 7, 1, 8], 10",
+      "steps": [
+        {
+          "narration": "The run begins with an empty seen set and the number three in hand.",
+          "toState": 2
+        },
+        {
+          "narration": "Three needs a seven to reach ten, and seven is nowhere in the set, so three gets stored.",
+          "toState": 6
+        },
+        {
+          "narration": "Now seven is up: it needs a three, and this time three is waiting inside the set.",
+          "toState": 8
+        },
+        {
+          "narration": "The pair is found and returned on the spot, three and seven, exactly ten.",
+          "toState": 10
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "text": "One Pass Proven",
+      "narration": "The trace shows every state between the first number and the returned pair, honestly."
+    }
+  ]
+}

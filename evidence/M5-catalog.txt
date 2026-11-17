@@ -1,0 +1,530 @@
+# Scene catalog (generated from schema/scene-schema.ts)
+
+A scene uses EXACTLY ONE of: one scene-level "narration" (12-60 words)
+or "steps" (each step carries its own narration, 6-40 words each).
+flow/bullets are capped at 5 steps (items on screen); other types 2-8.
+
+## type: title
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "narration": {
+   "type": "string",
+   "minLength": 10,
+   "maxLength": 400
+  },
+  "durationInFrames": {
+   "type": "integer",
+   "exclusiveMinimum": 0,
+   "maximum": 9007199254740991
+  },
+  "audioSeconds": {
+   "type": "number"
+  },
+  "words": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "text": {
+      "type": "string"
+     },
+     "start": {
+      "type": "number"
+     },
+     "end": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "text",
+     "start",
+     "end"
+    ]
+   }
+  },
+  "audioFile": {
+   "type": "string"
+  },
+  "type": {
+   "type": "string",
+   "const": "title"
+  },
+  "text": {
+   "type": "string",
+   "maxLength": 60
+  },
+  "subtitle": {
+   "type": "string",
+   "maxLength": 90
+  }
+ },
+ "required": [
+  "narration",
+  "type",
+  "text"
+ ]
+}
+--- example (title.json) ---
+{
+  "type": "title",
+  "text": "How Vaccines Work",
+  "subtitle": "A 60-second explainer",
+  "narration": "Welcome to a short explainer about how vaccines teach your body to defend itself."
+}
+
+## type: stat
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "narration": {
+   "type": "string",
+   "minLength": 10,
+   "maxLength": 400
+  },
+  "durationInFrames": {
+   "type": "integer",
+   "exclusiveMinimum": 0,
+   "maximum": 9007199254740991
+  },
+  "audioSeconds": {
+   "type": "number"
+  },
+  "words": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "text": {
+      "type": "string"
+     },
+     "start": {
+      "type": "number"
+     },
+     "end": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "text",
+     "start",
+     "end"
+    ]
+   }
+  },
+  "audioFile": {
+   "type": "string"
+  },
+  "type": {
+   "type": "string",
+   "const": "stat"
+  },
+  "value": {
+   "type": "number"
+  },
+  "suffix": {
+   "type": "string",
+   "maxLength": 4
+  },
+  "label": {
+   "type": "string",
+   "maxLength": 60
+  }
+ },
+ "required": [
+  "narration",
+  "type",
+  "value",
+  "label"
+ ]
+}
+--- example (stat.json) ---
+{
+  "type": "stat",
+  "value": 95,
+  "suffix": "%",
+  "label": "reduction in severe cases",
+  "narration": "In many trials, the rate of severe disease fell by around ninety five percent in vaccinated people."
+}
+
+## type: chart
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "narration": {
+   "type": "string",
+   "minLength": 10,
+   "maxLength": 400
+  },
+  "durationInFrames": {
+   "type": "integer",
+   "exclusiveMinimum": 0,
+   "maximum": 9007199254740991
+  },
+  "audioSeconds": {
+   "type": "number"
+  },
+  "words": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "text": {
+      "type": "string"
+     },
+     "start": {
+      "type": "number"
+     },
+     "end": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "text",
+     "start",
+     "end"
+    ]
+   }
+  },
+  "audioFile": {
+   "type": "string"
+  },
+  "type": {
+   "type": "string",
+   "const": "chart"
+  },
+  "title": {
+   "type": "string",
+   "maxLength": 50
+  },
+  "data": {
+   "minItems": 2,
+   "maxItems": 6,
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "label": {
+      "type": "string",
+      "maxLength": 12
+     },
+     "value": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "label",
+     "value"
+    ]
+   }
+  }
+ },
+ "required": [
+  "narration",
+  "type",
+  "title",
+  "data"
+ ]
+}
+--- example (chart.json) ---
+{
+  "type": "chart",
+  "title": "Cases per 100k",
+  "data": [
+    {
+      "label": "2019",
+      "value": 80
+    },
+    {
+      "label": "2020",
+      "value": 55
+    },
+    {
+      "label": "2021",
+      "value": 30
+    },
+    {
+      "label": "2022",
+      "value": 12
+    }
+  ],
+  "narration": "In the years after high vaccine uptake, severe cases fell sharply across the whole population."
+}
+
+## type: flow
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "narration": {
+   "type": "string",
+   "minLength": 10,
+   "maxLength": 400
+  },
+  "durationInFrames": {
+   "type": "integer",
+   "exclusiveMinimum": 0,
+   "maximum": 9007199254740991
+  },
+  "audioSeconds": {
+   "type": "number"
+  },
+  "words": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "text": {
+      "type": "string"
+     },
+     "start": {
+      "type": "number"
+     },
+     "end": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "text",
+     "start",
+     "end"
+    ]
+   }
+  },
+  "audioFile": {
+   "type": "string"
+  },
+  "type": {
+   "type": "string",
+   "const": "flow"
+  },
+  "title": {
+   "type": "string",
+   "maxLength": 50
+  },
+  "steps": {
+   "anyOf": [
+    {
+     "minItems": 2,
+     "maxItems": 5,
+     "type": "array",
+     "items": {
+      "type": "string",
+      "maxLength": 24
+     }
+    },
+    {
+     "minItems": 2,
+     "maxItems": 5,
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "item": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 24
+       },
+       "narration": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 400
+       },
+       "audioFile": {
+        "type": "string"
+       },
+       "audioSeconds": {
+        "type": "number"
+       },
+       "startFrame": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 9007199254740991
+       },
+       "frames": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991
+       }
+      },
+      "required": [
+       "item",
+       "narration"
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "required": [
+  "type",
+  "steps"
+ ]
+}
+--- example (flow-stepped.json) ---
+{
+  "type": "flow",
+  "title": "The method",
+  "steps": [
+    {
+      "item": "Boil water",
+      "narration": "First, bring fresh water to a rolling boil."
+    },
+    {
+      "item": "Add tea",
+      "narration": "Next, add one spoon of tea leaves for each cup."
+    },
+    {
+      "item": "Steep and serve",
+      "narration": "Finally, let it steep three minutes, then pour and enjoy."
+    }
+  ]
+}
+--- example (flow.json) ---
+{
+  "type": "flow",
+  "title": "The process",
+  "steps": [
+    "Harmless piece",
+    "Immune response",
+    "Antibodies"
+  ],
+  "narration": "A vaccine shows your immune system a harmless piece of a virus, which starts a response and builds protective antibodies."
+}
+
+## type: bullets
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "type": "object",
+ "properties": {
+  "narration": {
+   "type": "string",
+   "minLength": 10,
+   "maxLength": 400
+  },
+  "durationInFrames": {
+   "type": "integer",
+   "exclusiveMinimum": 0,
+   "maximum": 9007199254740991
+  },
+  "audioSeconds": {
+   "type": "number"
+  },
+  "words": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "text": {
+      "type": "string"
+     },
+     "start": {
+      "type": "number"
+     },
+     "end": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "text",
+     "start",
+     "end"
+    ]
+   }
+  },
+  "audioFile": {
+   "type": "string"
+  },
+  "type": {
+   "type": "string",
+   "const": "bullets"
+  },
+  "title": {
+   "type": "string",
+   "maxLength": 50
+  },
+  "items": {
+   "minItems": 2,
+   "maxItems": 5,
+   "type": "array",
+   "items": {
+    "type": "string",
+    "maxLength": 48
+   }
+  },
+  "steps": {
+   "minItems": 2,
+   "maxItems": 5,
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "item": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 48
+     },
+     "narration": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 400
+     },
+     "audioFile": {
+      "type": "string"
+     },
+     "audioSeconds": {
+      "type": "number"
+     },
+     "startFrame": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+     },
+     "frames": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+     }
+    },
+    "required": [
+     "item",
+     "narration"
+    ]
+   }
+  }
+ },
+ "required": [
+  "type",
+  "title"
+ ]
+}
+--- example (bullets-stepped.json) ---
+{
+  "type": "bullets",
+  "title": "Why it matters",
+  "steps": [
+    {
+      "item": "Fresh water matters",
+      "narration": "Fresh cold water tastes clearly better in the cup."
+    },
+    {
+      "item": "Do not over steep",
+      "narration": "Too long makes tea bitter, so keep an eye on the clock."
+    }
+  ]
+}
+--- example (bullets.json) ---
+{
+  "type": "bullets",
+  "title": "Key takeaways",
+  "items": [
+    "Trains your immune system",
+    "Safe and heavily tested",
+    "Protects the community"
+  ],
+  "narration": "Vaccines train your immune system, they are safe and heavily tested, and they protect the whole community."
+}
+

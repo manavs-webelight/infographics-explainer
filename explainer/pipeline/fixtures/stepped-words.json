@@ -1,0 +1,43 @@
+{
+ "title": "Tea, step by step",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "How Tea Works",
+   "subtitle": "A stepped test",
+   "narration": "Here is a tiny step by step test scene, one short sentence at a time."
+  },
+  {
+   "type": "flow",
+   "title": "The method",
+   "steps": [
+    {
+     "item": "Boil water",
+     "narration": "Boil the water now."
+    },
+    {
+     "item": "Add tea",
+     "narration": "Next, add one spoon of tea leaves for each cup."
+    },
+    {
+     "item": "Steep and serve",
+     "narration": "Finally, let it steep three minutes, then pour and enjoy."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Why it matters",
+   "steps": [
+    {
+     "item": "Fresh water matters",
+     "narration": "Fresh cold water tastes clearly better in the cup."
+    },
+    {
+     "item": "Do not over steep",
+     "narration": "Too long makes tea bitter, so keep an eye on the clock."
+    }
+   ]
+  }
+ ]
+}

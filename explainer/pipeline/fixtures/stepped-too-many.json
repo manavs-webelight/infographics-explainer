@@ -1,0 +1,55 @@
+{
+ "title": "Tea, step by step",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "How Tea Works",
+   "subtitle": "A stepped test",
+   "narration": "Here is a tiny step by step test scene, one short sentence at a time."
+  },
+  {
+   "type": "flow",
+   "title": "The method",
+   "steps": [
+    {
+     "item": "One",
+     "narration": "This is the first step of the method in plain words."
+    },
+    {
+     "item": "Two",
+     "narration": "This is the second step of the method in plain words."
+    },
+    {
+     "item": "Three",
+     "narration": "This is the third step of the method in plain words."
+    },
+    {
+     "item": "Four",
+     "narration": "This is the fourth step of the method in plain words."
+    },
+    {
+     "item": "Five",
+     "narration": "This is the fifth step of the method in plain words."
+    },
+    {
+     "item": "Six",
+     "narration": "This is the sixth step of the method in plain words."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Why it matters",
+   "steps": [
+    {
+     "item": "Fresh water matters",
+     "narration": "Fresh cold water tastes clearly better in the cup."
+    },
+    {
+     "item": "Do not over steep",
+     "narration": "Too long makes tea bitter, so keep an eye on the clock."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+ "title": "How vaccines work",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "How Vaccines Work",
+   "subtitle": "A 60-second explainer",
+   "narration": "Welcome to this short explainer on how vaccines train your immune system step by step."
+  },
+  {
+   "type": "stat",
+   "value": 95,
+   "suffix": "%",
+   "label": "reduction in severe cases",
+   "narration": "For many vaccines, the risk of severe disease drops dramatically among people who are vaccinated."
+  },
+  {
+   "type": "chart",
+   "title": "Cases per 100k",
+   "data": [
+    {
+     "label": "2019",
+     "value": 80
+    },
+    {
+     "label": "2020",
+     "value": 55
+    },
+    {
+     "label": "2021",
+     "value": 30
+    },
+    {
+     "label": "2022",
+     "value": 12
+    }
+   ],
+   "narration": "In the years after high vaccine uptake, severe cases fell sharply across the whole population."
+  },
+  {
+   "type": "flow",
+   "title": "The process",
+   "steps": [
+    "First piece",
+    "Second piece",
+    "Third piece",
+    "Fourth piece",
+    "Fifth piece",
+    "Sixth piece",
+    "Seventh piece"
+   ],
+   "narration": "A vaccine shows your immune system a harmless piece of a virus, which starts a response and builds protective antibodies."
+  },
+  {
+   "type": "bullets",
+   "title": "Key takeaways",
+   "items": [
+    "Trains your immune system",
+    "Safe and heavily tested",
+    "Protects the community"
+   ],
+   "narration": "Vaccines train your immune system, they are safe and heavily tested, and they protect the whole community."
+  }
+ ]
+}

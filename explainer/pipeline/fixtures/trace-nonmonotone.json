@@ -1,0 +1,34 @@
+{
+  "title": "Trace fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Under The Hood",
+      "narration": "Same function, new eyes: watch the variables change one recorded step at a time."
+    },
+    {
+      "type": "trace",
+      "title": "Watch it run: target ten",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "source": "snippets/pair_sum.py",
+      "entry": "pair_sum",
+      "args": "[3, 7, 1, 8], 10",
+      "steps": [
+        {
+          "narration": "First half of the walk, states one through five.",
+          "toState": 5
+        },
+        {
+          "narration": "Second half stepping back to three, which is not allowed.",
+          "toState": 3
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "text": "One Pass Proven",
+      "narration": "The trace shows every state between the first number and the returned pair, honestly."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "m8-gate",
+  "createdAt": "2026-11-17T15:09:56.777Z",
+  "voice": "marius",
+  "draft": false,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0.1
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0.1
+    },
+    {
+      "name": "highlight",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "trace",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "cached",
+      "seconds": 10.7
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 728.5
+    }
+  ],
+  "retries": 0,
+  "claims": [],
+  "output": "projects/m8-gate/video.mp4",
+  "totalFrames": 2006,
+  "totalSeconds": 66.9,
+  "status": "ok",
+  "summary": "done"
+}

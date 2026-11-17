@@ -1,0 +1,46 @@
+[
+  {
+    "scene": 0,
+    "voice": "marius",
+    "text": "Vaccines are one of the most important tools ...",
+    "audioSeconds": 4.36,
+    "audioFrames": 131,
+    "durationInFrames": 165,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 1,
+    "voice": "marius",
+    "text": "In many trials, the rate of severe disease fe...",
+    "audioSeconds": 5.56,
+    "audioFrames": 167,
+    "durationInFrames": 201,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 2,
+    "voice": "marius",
+    "text": "That protection goes beyond the individual, b...",
+    "audioSeconds": 6.04,
+    "audioFrames": 182,
+    "durationInFrames": 216,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 3,
+    "voice": "marius",
+    "text": "That is how vaccines protect you and everyone...",
+    "audioSeconds": 4.12,
+    "audioFrames": 124,
+    "durationInFrames": 170,
+    "tail": 30,
+    "marginFrames": 30,
+    "cached": true
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "title": "Bad line",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Two Numbers, One Pass",
+      "narration": "Watch a tiny search find its pair in a single pass through the list, line by line."
+    },
+    {
+      "type": "code",
+      "title": "Finding a pair in one pass",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "steps": [
+        {
+          "narration": "The function takes a list of numbers and a target total, and it promises to find a matching pair.",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "narration": "Now the loop walks through the list one number at a time, giving each of them a turn.",
+          "lines": [
+            3,
+            4
+          ]
+        },
+        {
+          "narration": "Here is the heart of the trick: it checks whether that needed partner has been seen before.",
+          "lines": [
+            5,
+            6
+          ]
+        },
+        {
+          "narration": "Otherwise the current number joins the seen set, and the loop simply moves to the next one.",
+          "lines": [
+            7
+          ]
+        },
+        {
+          "narration": "If the whole list is finished with no partner found, the function honestly returns None.",
+          "lines": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Why it works",
+      "steps": [
+        {
+          "item": "One pass, steady work",
+          "narration": "Each number is checked exactly once, so the effort grows in step with the list size."
+        },
+        {
+          "item": "Memory buys speed",
+          "narration": "The seen set remembers past numbers, trading a little memory for instant lookups."
+        }
+      ]
+    }
+  ]
+}

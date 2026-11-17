@@ -1,0 +1,9 @@
+M5 gate timing log (scene-relative startFrames; 6-frame gaps between steps)
+scene 0: speech=4.04s scene=156f margin=18f
+scene 1: speech=10.28s scene=356f margin=18f
+  step 0: start=16f len=88f (2.92s)
+  step 1: start=110f len=105f (3.48s)
+  step 2: start=221f len=117f (3.88s)
+scene 2: speech=5.92s scene=231f margin=30f
+  step 0: start=16f len=81f (2.68s)
+  step 1: start=103f len=98f (3.24s)

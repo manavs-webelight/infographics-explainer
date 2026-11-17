@@ -1,0 +1,31 @@
+{
+ "title": "How vaccines work",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "Vaccines are one of the greatest achievements of modern medicine and public health everywhere",
+   "subtitle": "A 60-second explainer",
+   "narration": "Welcome to this short explainer on how vaccines train your immune system step by step."
+  },
+  {
+   "type": "flow",
+   "title": "The process",
+   "steps": [
+    "Weakened virus",
+    "Immune response",
+    "Antibodies"
+   ],
+   "narration": "A vaccine shows your immune system a harmless piece of a virus, which starts a response and builds protective antibodies."
+  },
+  {
+   "type": "bullets",
+   "title": "Key takeaways",
+   "items": [
+    "Trains your immune system",
+    "Safe and heavily tested",
+    "Protects the community"
+   ],
+   "narration": "Vaccines train your immune system, they are safe and heavily tested, and they protect the whole community."
+  }
+ ]
+}

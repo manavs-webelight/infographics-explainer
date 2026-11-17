@@ -1,0 +1,13 @@
+=== D. failed run: TTS server down, --force ===
+[make] FAILED: fetch failed
+make exit=1
+--- project folder after failure (must have NO video.mp4 / video.tmp.mp4) ---
+audio
+audio-timing.json
+log.json
+scenes.json
+--- log.json on failure ---
+{
+ "status": "failed",
+ "error": "fetch failed"
+}

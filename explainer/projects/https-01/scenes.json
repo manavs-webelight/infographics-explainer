@@ -1,0 +1,109 @@
+{
+  "title": "How HTTPS keeps you safe",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How HTTPS Keeps You Safe",
+      "subtitle": "A 60-second explainer",
+      "narration": "Have you ever wondered what that little padlock by a web address actually means? Let us find out.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 5.32,
+      "durationInFrames": 194
+    },
+    {
+      "type": "bullets",
+      "title": "Life without HTTPS",
+      "items": [
+        "Sent in the clear",
+        "Strangers can read it",
+        "Strangers can change it"
+      ],
+      "narration": "Plain HTTP sends everything as plain text. On an open network, anyone nearby could read your messages, or even change them while they travel.",
+      "audioFile": "audio/scene-1.wav",
+      "audioSeconds": 7.96,
+      "durationInFrames": 273
+    },
+    {
+      "type": "flow",
+      "title": "The handshake",
+      "steps": [
+        "Client hello",
+        "Server hello",
+        "Certificate shown",
+        "Keys agreed",
+        "Secure channel"
+      ],
+      "narration": "HTTPS starts with a quick handshake. The browser and the server greet each other, the server proves its identity with a certificate, and they agree on secret keys known only to them.",
+      "audioFile": "audio/scene-2.wav",
+      "audioSeconds": 9.96,
+      "durationInFrames": 333
+    },
+    {
+      "type": "stat",
+      "value": 95,
+      "suffix": "%",
+      "label": "of Chrome page loads are HTTPS",
+      "narration": "Today, more than ninety five percent of page loads in Google Chrome happen over HTTPS, up from barely half just a decade ago.",
+      "audioFile": "audio/scene-3.wav",
+      "audioSeconds": 7,
+      "durationInFrames": 244
+    },
+    {
+      "type": "chart",
+      "title": "Share of Chrome traffic",
+      "data": [
+        {
+          "label": "2015",
+          "value": 52
+        },
+        {
+          "label": "2019",
+          "value": 81
+        },
+        {
+          "label": "2022",
+          "value": 93
+        },
+        {
+          "label": "2025",
+          "value": 96
+        }
+      ],
+      "narration": "On Chrome, encrypted traffic grew from around fifty percent in twenty fifteen to more than ninety five percent by the early twenty twenties.",
+      "audioFile": "audio/scene-4.wav",
+      "audioSeconds": 7.4,
+      "durationInFrames": 256
+    },
+    {
+      "type": "bullets",
+      "title": "Who vouches for a site",
+      "items": [
+        "Certificate authorities issue",
+        "Browsers trust a curated list",
+        "Invalid certificates get blocked"
+      ],
+      "narration": "Certificates come from certificate authorities, trusted organizations vetted by browser makers. When a certificate is wrong or expired, your browser stops you before any data is sent.",
+      "audioFile": "audio/scene-5.wav",
+      "audioSeconds": 9.72,
+      "durationInFrames": 326
+    },
+    {
+      "type": "stat",
+      "value": 443,
+      "label": "the port HTTPS always uses",
+      "narration": "One number is worth remembering. HTTPS always connects on port four hundred and forty three, while plain HTTP uses port eighty.",
+      "audioFile": "audio/scene-6.wav",
+      "audioSeconds": 7.88,
+      "durationInFrames": 271
+    },
+    {
+      "type": "title",
+      "text": "Check for HTTPS First",
+      "subtitle": "Your data will thank you",
+      "narration": "So next time you log in, glance for the padlock and the letters H T T P S. That small check keeps your secrets yours.",
+      "audioFile": "audio/scene-7.wav",
+      "audioSeconds": 7.32,
+      "durationInFrames": 266
+    }
+  ]
+}

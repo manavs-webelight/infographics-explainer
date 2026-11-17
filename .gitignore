@@ -1,0 +1,13 @@
+# dependencies
+explainer/node_modules/
+
+# scratch output (stills, temp renders)
+explainer/out/
+
+# rendered narration + rendered videos inside projects/
+explainer/projects/*/audio/
+explainer/projects/*/video.mp4
+
+# OS / editor noise
+.DS_Store
+*.swp

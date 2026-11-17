@@ -1,0 +1,99 @@
+{
+  "title": "Graph fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Validation Works",
+      "narration": "A short walk through a tiny request lifecycle, one focus at a time."
+    },
+    {
+      "type": "graph",
+      "title": "Request lifecycle",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "client",
+          "label": "Browser",
+          "kind": "start"
+        },
+        {
+          "id": "server",
+          "label": "API server",
+          "kind": "process"
+        },
+        {
+          "id": "valid",
+          "label": "Valid?",
+          "kind": "decision"
+        },
+        {
+          "id": "store",
+          "label": "Save row",
+          "kind": "process"
+        },
+        {
+          "id": "done",
+          "label": "Render page",
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "from": "client",
+          "to": "server"
+        },
+        {
+          "from": "server",
+          "to": "valid"
+        },
+        {
+          "from": "valid",
+          "to": "client",
+          "label": "no"
+        },
+        {
+          "from": "valid",
+          "to": "store",
+          "label": "yes"
+        },
+        {
+          "from": "store",
+          "to": "done"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "The browser sends a request and the API server takes over from there now.",
+          "focus": [
+            "client",
+            "client->server",
+            "server"
+          ]
+        },
+        {
+          "narration": "The validity check happens next, and a good payload moves on to storage safely.",
+          "focus": [
+            "valid",
+            "server->valid",
+            "valid->store",
+            "store"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Takeaways",
+      "steps": [
+        {
+          "item": "Check before storing",
+          "narration": "A quick validity check keeps bad data out of your database entirely."
+        },
+        {
+          "item": "Errors travel home too",
+          "narration": "A clear error back to the browser beats a silent failure every time."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "m7-gate",
+  "createdAt": "2026-11-17T14:42:53.392Z",
+  "voice": "marius",
+  "draft": false,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0.1
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0.1
+    },
+    {
+      "name": "highlight",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "cached",
+      "seconds": 6.6
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 490.2
+    }
+  ],
+  "retries": 0,
+  "claims": [],
+  "output": "projects/m7-gate/video.mp4",
+  "totalFrames": 1251,
+  "totalSeconds": 41.7,
+  "status": "ok",
+  "summary": "done"
+}

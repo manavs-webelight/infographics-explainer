@@ -1,0 +1,27 @@
+{
+ "title": "How vaccines work",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "How Vaccines Work",
+   "subtitle": "A 60-second explainer",
+   "narration": "Welcome to this short explainer on how vaccines train your immune system step by step."
+  },
+  {
+   "type": "timeline",
+   "year": "1796",
+   "event": "Jenner's smallpox vaccine",
+   "narration": "The very first vaccine was given in seventeen ninety six by Edward Jenner in England."
+  },
+  {
+   "type": "bullets",
+   "title": "Key takeaways",
+   "items": [
+    "Trains your immune system",
+    "Safe and heavily tested",
+    "Protects the community"
+   ],
+   "narration": "Vaccines train your immune system, they are safe and heavily tested, and they protect the whole community."
+  }
+ ]
+}

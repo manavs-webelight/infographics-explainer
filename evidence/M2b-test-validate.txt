@@ -1,0 +1,31 @@
+
+> explainer@1.0.0 test:validate
+> node --no-warnings pipeline/test-validate.ts
+
+
+=== valid.json — PASS (exit 0) ===
+[validate] ok, 5 scenes: pipeline/fixtures/valid.json
+
+=== wrong-type.json — PASS (exit 1) ===
+scenes[1]: unknown scene type "timeline" (allowed: title, flow, stat, chart, bullets)
+
+=== missing-field.json — PASS (exit 1) ===
+scenes[1].label: required field missing (expected string)
+
+=== too-many-items.json — PASS (exit 1) ===
+scenes[3].steps: must have at most 5 items (got 7)
+
+=== over-long-text.json — PASS (exit 1) ===
+scenes[0].text: must be at most 60 characters (got 93)
+
+=== wrong-first-scene.json — PASS (exit 1) ===
+scenes[0]: first scene must be type "title"
+
+=== tts-text-hygiene.json — PASS (exit 1) ===
+scenes[1].narration: spell it out for the voice — found "%", write "percent"
+scenes[1].narration: spell it out for the voice — found number "95", write it as words
+scenes[2].narration: spell it out for the voice — found "&", write "and"
+scenes[3].narration: spell it out for the voice — found "i.e.", write "that is"
+scenes[4].narration: spell it out for the voice — found "etc.", write "and so on"
+
+7/7 fixture cases passed

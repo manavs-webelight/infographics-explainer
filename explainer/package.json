@@ -1,0 +1,31 @@
+{
+  "name": "explainer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Video out/video.mp4",
+    "still": "remotion still src/index.ts Video out/check.png",
+    "validate": "node --no-warnings pipeline/validate.ts",
+    "test:validate": "node --no-warnings pipeline/test-validate.ts",
+    "make": "node --no-warnings pipeline/make-video.ts",
+    "catalog": "node --no-warnings pipeline/catalog.ts",
+    "contact-sheet": "node --no-warnings pipeline/contact-sheet.ts",
+    "trace": "node --no-warnings pipeline/trace.ts"
+  },
+  "dependencies": {
+    "@dagrejs/dagre": "3.1.3",
+    "@remotion/cli": "4.0.544",
+    "@remotion/paths": "4.0.544",
+    "@remotion/shapes": "4.0.544",
+    "@remotion/transitions": "4.0.544",
+    "@types/react": "^19.3.0",
+    "lucide-react": "^1.73.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "4.0.544",
+    "shiki": "4.6.0",
+    "typescript": "^7.0.2",
+    "zod": "4.6.7"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Text hygiene demo",
+  "scenes": [
+    {"type": "title", "text": "Staying Healthy", "subtitle": "A short explainer",
+     "narration": "Small everyday habits add up to real protection for you and the people around you."},
+    {"type": "stat", "value": 95, "suffix": "%", "label": "protection in trials",
+     "narration": "Protection rises to 95 % within a few weeks, according to trial data from many independent studies."},
+    {"type": "flow", "title": "How it works", "steps": ["Exposure", "Response", "Memory"],
+     "narration": "The design combines a carrier & a harmless protein to trigger a strong immune response in the body."},
+    {"type": "chart", "title": "Cases over time", "data": [{"label": "2019", "value": 100}, {"label": "2020", "value": 40}, {"label": "2021", "value": 20}, {"label": "2022", "value": 8}],
+     "narration": "Cases fell from a hundred thousand to twenty thousand, i.e. by eighty percent, over two years of data."},
+    {"type": "bullets", "title": "Takeaways", "items": ["Wash hands", "Ventilate rooms"],
+     "narration": "Simple habits such as hand washing, ventilation, etc. still matter a lot for everyone around you."}
+  ]
+}

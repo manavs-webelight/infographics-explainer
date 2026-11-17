@@ -1,0 +1,40 @@
+step 1 (state at frame 1024): highlighted=[2] bar=[2] expected=[2] -> OK
+step 2 (state at frame 1173): highlighted=[4] bar=[4] expected=[4] -> OK
+step 3 (state at frame 1373): highlighted=[4] bar=[4] expected=[4] -> OK
+step 4 (state at frame 1534): highlighted=[6] bar=[6] expected=[6] -> OK
+step 1 END panel OCR (state 2): STATE 2 - LINE 3 - LINE nums = [3, 7, 1, 8] target = 10 seen = set()
+step 2 END panel OCR (state 6): STATE 6 - LINE 3 - LINE nums = [3, 7, 1, 8] target = 10 seen = {3} n=3 need = 7
+step 3 END panel OCR (state 8): STATE 8 - LINE 5 - LINE nums = [3, 7, 1, 8] target = 10 seen = {3} n=7 need = 3
+step 4 END panel OCR (state 10): STATE 10 - LINE 6 - RETURN nums = [3, 7, 1, 8] target = 10 seen = {3} n=7 need = 3 returns (3, 7) result (3. 7
+measured fonts: code/gutter/state rows 28px, state header 30px, heading 64px -> minimum 28px
+trace states recorded: 10 of max 50 (pair_sum run)
+ALL POSITION CHECKS: PASS
+== M8 trace-tool safety evidence (fresh runs) ==
+--- infinite loop: wall timeout kills it ---
+trace spin([]): 0 states ERROR: TypeError('spin() takes 0 positional ...
+sandbox: temp-dir, 5s timeout, 512MB, network=socket-guard, 29ms
+--- 2GB allocation: RLIMIT_AS (512MB) raises MemoryError, tool completes ==
+--- network access blocked ---
+ERROR: TypeError('fetch() takes 0 positional...
+--- path guard: code outside the project is rejected ---
+[trace] failed: trace refuses to run "/tmp/outside_pair.py": only code inside this project may run (ask the user before running anything else)
+--- recorded states cap ---
+pair_sum run: 10 states, is_balanced run: 11 states (max 50 enforced by harness)
+--- infinite loop: wall timeout kills it (retry with *a signature) ---
+real	0m5.642s
+--- 2GB allocation: RLIMIT_AS raises MemoryError (retry with *a) ---
+trace hog([]): 5 states result='memory-error'
+--- network socket: blocked (retry with *a) ---
+trace fetch([]): 3 states ERROR: OSError('network access is disabled b...
+story graph (m8-story) fitted font: 28px = floor(28) OK
+gate fonts: code/gutter/state 28px, state header 30px, title 64px -> measured minimum 28px
+safety: wall-timeout kill 5.6s real (infinite loop); hog() -> result='memory-error'; fetch() -> OSError('network access is disabled by the trace tool'); /tmp/outside_pair.py -> refused ('only code inside this project may run')
+state caps: pair_sum 10/50, is_balanced 11/50
+voice change: marius->alba, m8-story re-drafted at 20:54
+== m8-story FINAL render (alba) objective checks ==
+file: explainer/projects/m8-story/video.mp4  size: 5953986 bytes (5.7 MB)
+probe: h264 1920x1080 30fps | aac 48kHz stereo | duration 105.600s
+last speech ends frame 3138 (104.6s), 30 frames tail before 3168 end - no cutoff
+whistle transcript of tail: 'A final depth of zero means every bracket found its partner in the right order.' - complete, 0 missing keywords
+measured minimum font: 28px (code/gutter/trace-state rows); OCR of final MP4 pixels reads them: "depth += 1", "return depth == 0", "STATE 11 - LINE 9 - RETURN ... depth = -1 ... returns False"
+story graph fitted font: 28px = legibility floor

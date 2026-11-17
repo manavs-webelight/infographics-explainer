@@ -1,0 +1,66 @@
+=== C. new project, draft render ===
+[setup] ok
+[script] ok, 4 scenes
+[audio] 1/4 synthesizing (voice marius)
+[audio] 2/4 synthesizing (voice marius)
+[audio] 3/4 synthesizing (voice marius)
+[audio] 4/4 synthesizing (voice marius)
+[audio] done: 4 scenes | scene | audio_s | audio_fr | dur_fr | lead+tail | margin_fr (needs >= 12)
+[audio] scene 0: 4.36s audio=131f scene=165f lead=16 tail=18 margin=18f
+[audio] scene 1: 5.56s audio=167f scene=201f lead=16 tail=18 margin=18f
+[audio] scene 2: 6.04s audio=182f scene=216f lead=16 tail=18 margin=18f
+[audio] scene 3: 4.12s audio=124f scene=170f lead=16 tail=30 margin=30f
+[audio] total composition length: 716 frames (23.9s)
+[render] ok, draft -> projects/m4-demo/video.mp4
+[make] done: projects/m4-demo/video.mp4 (23.9s)
+exit=0
+
+=== log.json ===
+{
+  "id": "m4-demo",
+  "createdAt": "2026-11-16T14:50:58.378Z",
+  "voice": "marius",
+  "draft": true,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0.1
+    },
+    {
+      "name": "script",
+      "status": "done",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "done",
+      "seconds": 65.5
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 93.5
+    }
+  ],
+  "retries": 0,
+  "claims": [
+    {
+      "scene": 1,
+      "kind": "stat",
+      "number": "95%",
+      "label": "fewer severe cases"
+    }
+  ],
+  "output": "projects/m4-demo/video.mp4",
+  "totalFrames": 716,
+  "totalSeconds": 23.9,
+  "status": "ok",
+  "summary": "done"
+}
+
+=== draft video resolution ===
+video,960,540
+audio

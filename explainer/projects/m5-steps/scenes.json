@@ -1,0 +1,68 @@
+{
+  "title": "Tea, step by step",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Tea Works",
+      "subtitle": "A stepped test",
+      "narration": "Here is a tiny step by step test scene, one short sentence at a time.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 4.04,
+      "durationInFrames": 156
+    },
+    {
+      "type": "flow",
+      "title": "The method",
+      "steps": [
+        {
+          "item": "Boil water",
+          "narration": "First, bring fresh water to a rolling boil.",
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 3.08,
+          "startFrame": 16,
+          "frames": 93
+        },
+        {
+          "item": "Add tea",
+          "narration": "Next, add one spoon of tea leaves for each cup.",
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 3.48,
+          "startFrame": 115,
+          "frames": 105
+        },
+        {
+          "item": "Steep and serve",
+          "narration": "Finally, let it steep three minutes, then pour and enjoy.",
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 3.96,
+          "startFrame": 226,
+          "frames": 119
+        }
+      ],
+      "durationInFrames": 363
+    },
+    {
+      "type": "bullets",
+      "title": "Why it matters",
+      "steps": [
+        {
+          "item": "Fresh water matters",
+          "narration": "Fresh cold water tastes clearly better in the cup.",
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 2.68,
+          "startFrame": 16,
+          "frames": 81
+        },
+        {
+          "item": "Do not over steep",
+          "narration": "Too long makes tea bitter, so keep an eye on the clock.",
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 3.4,
+          "startFrame": 103,
+          "frames": 102
+        }
+      ],
+      "durationInFrames": 235
+    }
+  ]
+}

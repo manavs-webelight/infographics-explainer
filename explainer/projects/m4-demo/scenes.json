@@ -1,0 +1,44 @@
+{
+  "title": "How vaccines work",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Vaccines Work",
+      "subtitle": "Numbers in a video",
+      "narration": "Vaccines are one of the most important tools in medicine, so let us see how they actually work.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 4.36,
+      "durationInFrames": 165
+    },
+    {
+      "type": "stat",
+      "value": 95,
+      "suffix": "%",
+      "label": "fewer severe cases",
+      "narration": "In many trials, the rate of severe disease fell by around ninety five percent in vaccinated people.",
+      "audioFile": "audio/scene-1.wav",
+      "audioSeconds": 5.56,
+      "durationInFrames": 201
+    },
+    {
+      "type": "bullets",
+      "title": "Why it matters",
+      "items": [
+        "Personal protection",
+        "Community protection"
+      ],
+      "narration": "That protection goes beyond the individual, because fewer infections also shield people who cannot be vaccinated.",
+      "audioFile": "audio/scene-2.wav",
+      "audioSeconds": 6.04,
+      "durationInFrames": 216
+    },
+    {
+      "type": "title",
+      "text": "Stay Protected",
+      "narration": "That is how vaccines protect you and everyone around you, one small step at a time.",
+      "audioFile": "audio/scene-3.wav",
+      "audioSeconds": 4.12,
+      "durationInFrames": 170
+    }
+  ]
+}

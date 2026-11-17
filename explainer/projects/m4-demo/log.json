@@ -1,0 +1,44 @@
+{
+  "id": "m4-demo",
+  "createdAt": "2026-11-16T14:51:54.174Z",
+  "voice": "marius",
+  "draft": false,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0.1
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0.1
+    },
+    {
+      "name": "audio",
+      "status": "cached",
+      "seconds": 3.2
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 144.1
+    }
+  ],
+  "retries": 0,
+  "claims": [
+    {
+      "scene": 1,
+      "kind": "stat",
+      "number": "95%",
+      "label": "fewer severe cases"
+    }
+  ],
+  "output": "projects/m4-demo/video.mp4",
+  "totalFrames": 716,
+  "totalSeconds": 23.9,
+  "status": "ok",
+  "summary": "done"
+}

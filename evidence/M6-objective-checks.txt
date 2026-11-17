@@ -1,0 +1,42 @@
+M6 GRAPH VERIFICATION (all measurements automated, no eyeballing)
+=================================================================
+Determinism: two independent renders of the same frame => identical SHA-256.
+
+Layout math (dagre 3.1.3, exact pin): recomputed node boxes independently
+in Node+Python, then sampled rendered pixels in 17px windows at the exact
+expected border coordinates.
+
+FRAME 320 (linear graph "A straight line", step 1 active):
+  start  cyan=6  orange=0   (revealed, dimmed)            PASS
+  fetch  cyan=0  orange=8   (ACTIVE -> orange)            PASS
+  parse  cyan=0  orange=10  (ACTIVE -> orange)            PASS
+  draw   absent (not yet revealed)                        PASS
+  end    absent (not yet revealed)                        PASS
+
+FRAME 1045 (branching graph, decision + loop-back, final step):
+  all 5 nodes visible at exact positions; save & bye orange
+  (active branch), recv/chk/report cyan-dim; in-bounds       PASS
+
+FRAME 2135 (architecture graph, 8 nodes TB, final step):
+  all 8 nodes visible; db orange (active), users/orders mixed
+  (active outgoing edges pass the sample window); in-bounds  PASS
+
+FRAME 1150 (STRESS: MAX limits = 10 nodes, 14 edges, 24-char
+labels, 8 steps; layout scale 0.55, fonts floor at 18px):
+  10/10 nodes visible at exact coordinates, all in-bounds   PASS
+
+Text QA: tesseract OCR of full-res crops read node labels
+("Redis cache", "Order api", "User api", "Auth service") and the
+headings. At max limits, long labels wrap INSIDE the boxes (OCR read
+"Session / store Nods" across lines) - no clipping, labels stay in boxes.
+
+NOTE ON METHOD: two image readings during this milestone were wrong
+(claimed empty frames / a narration caption that no component can render).
+Byte-level checks proved the files correct both times. For this project,
+pixel measurements and OCR are the source of truth; visual readings of
+downscaled attachments are treated as unreliable.
+
+Voice: marius is the default everywhere (pipeline/tts.ts DEFAULT_VOICE).
+m5-steps and marius-test audio + videos re-rendered with marius.
+Contact-sheet labels are now burned INTO every tile (drawtext) and the
+stale-sheet file is deleted before each run.

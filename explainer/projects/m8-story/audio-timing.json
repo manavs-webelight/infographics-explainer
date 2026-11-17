@@ -1,0 +1,151 @@
+[
+  {
+    "scene": 0,
+    "voice": "alba",
+    "audioSeconds": 9.16,
+    "audioFrames": 275,
+    "durationInFrames": 309,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 1,
+    "voice": "alba",
+    "audioSeconds": 26.6,
+    "audioFrames": 811,
+    "durationInFrames": 845,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 6.6,
+        "startFrame": 16,
+        "frames": 198,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 10.44,
+        "startFrame": 220,
+        "frames": 314,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 9.56,
+        "startFrame": 540,
+        "frames": 287,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 2,
+    "voice": "alba",
+    "audioSeconds": 31,
+    "audioFrames": 955,
+    "durationInFrames": 989,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 5.32,
+        "startFrame": 16,
+        "frames": 160,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.76,
+        "startFrame": 182,
+        "frames": 143,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 5.8,
+        "startFrame": 331,
+        "frames": 174,
+        "cached": true
+      },
+      {
+        "step": 3,
+        "audioSeconds": 8.52,
+        "startFrame": 511,
+        "frames": 256,
+        "cached": true
+      },
+      {
+        "step": 4,
+        "audioSeconds": 6.6,
+        "startFrame": 773,
+        "frames": 198,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 3,
+    "voice": "alba",
+    "audioSeconds": 23,
+    "audioFrames": 703,
+    "durationInFrames": 737,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 9.56,
+        "startFrame": 16,
+        "frames": 287,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 6.28,
+        "startFrame": 309,
+        "frames": 189,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 7.16,
+        "startFrame": 504,
+        "frames": 215,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 4,
+    "voice": "alba",
+    "audioSeconds": 9.44,
+    "audioFrames": 290,
+    "durationInFrames": 336,
+    "tail": 30,
+    "marginFrames": 30,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 4.92,
+        "startFrame": 16,
+        "frames": 148,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.52,
+        "startFrame": 170,
+        "frames": 136,
+        "cached": true
+      }
+    ]
+  }
+]

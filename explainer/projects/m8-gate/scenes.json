@@ -1,0 +1,570 @@
+{
+  "title": "Trace gate",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Under the Hood",
+      "narration": "The pair sum function you already know, now replayed state by state from a real recorded run.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 5.24,
+      "durationInFrames": 192
+    },
+    {
+      "type": "code",
+      "title": "Finding a pair in one pass",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "steps": [
+        {
+          "narration": "The function takes a list of numbers and a target total, and it promises to find a matching pair.",
+          "lines": [
+            1,
+            2
+          ],
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 5.64,
+          "startFrame": 16,
+          "frames": 170
+        },
+        {
+          "narration": "Now the loop walks through the list one number at a time, giving each of them a turn.",
+          "lines": [
+            3,
+            4
+          ],
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 4.92,
+          "startFrame": 192,
+          "frames": 148
+        },
+        {
+          "narration": "Here is the heart of the trick: it checks whether that needed partner has been seen before.",
+          "lines": [
+            5,
+            6
+          ],
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 4.68,
+          "startFrame": 346,
+          "frames": 141
+        },
+        {
+          "narration": "Otherwise the current number joins the seen set, and the loop simply moves to the next one.",
+          "lines": [
+            7
+          ],
+          "audioFile": "audio/scene-1-step-3.wav",
+          "audioSeconds": 4.76,
+          "startFrame": 493,
+          "frames": 143
+        },
+        {
+          "narration": "If the whole list is finished with no partner found, the function honestly returns None.",
+          "lines": [
+            8
+          ],
+          "audioFile": "audio/scene-1-step-4.wav",
+          "audioSeconds": 5,
+          "startFrame": 642,
+          "frames": 150
+        }
+      ],
+      "tokens": [
+        [
+          [
+            "def",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "pair_sum",
+            "#B392F0"
+          ],
+          [
+            "(nums, target):",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    seen ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "set",
+            "#79B8FF"
+          ],
+          [
+            "()",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "for",
+            "#F97583"
+          ],
+          [
+            " n ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " nums:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        need ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " target ",
+            "#E1E4E8"
+          ],
+          [
+            "-",
+            "#F97583"
+          ],
+          [
+            " n",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " need ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " seen:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " (need, n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        seen.add(n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "None",
+            "#79B8FF"
+          ]
+        ]
+      ],
+      "codeHash": "3829963754b97c6c",
+      "durationInFrames": 810
+    },
+    {
+      "type": "trace",
+      "title": "Watch it run: target ten",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "source": "snippets/pair_sum.py",
+      "entry": "pair_sum",
+      "args": "[3, 7, 1, 8], 10",
+      "steps": [
+        {
+          "narration": "The run begins: numbers, the target, and a brand new empty seen set.",
+          "toState": 2,
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 4.76,
+          "startFrame": 16,
+          "frames": 143
+        },
+        {
+          "narration": "Three comes up first: it needs a seven to reach ten, seven is nowhere in the set, so three is stored and the loop moves on.",
+          "toState": 6,
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 6.44,
+          "startFrame": 165,
+          "frames": 194
+        },
+        {
+          "narration": "Now seven takes its turn: seven needs three more, and this time three sits inside the seen set.",
+          "toState": 8,
+          "audioFile": "audio/scene-2-step-2.wav",
+          "audioSeconds": 5.16,
+          "startFrame": 365,
+          "frames": 155
+        },
+        {
+          "narration": "The check passes, the pair comes back on the spot: three and seven, and the reported result adds to exactly ten.",
+          "toState": 10,
+          "audioFile": "audio/scene-2-step-3.wav",
+          "audioSeconds": 6.68,
+          "startFrame": 526,
+          "frames": 201
+        }
+      ],
+      "tokens": [
+        [
+          [
+            "def",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "pair_sum",
+            "#B392F0"
+          ],
+          [
+            "(nums, target):",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    seen ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "set",
+            "#79B8FF"
+          ],
+          [
+            "()",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "for",
+            "#F97583"
+          ],
+          [
+            " n ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " nums:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        need ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " target ",
+            "#E1E4E8"
+          ],
+          [
+            "-",
+            "#F97583"
+          ],
+          [
+            " n",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " need ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " seen:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " (need, n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        seen.add(n)",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "None",
+            "#79B8FF"
+          ]
+        ]
+      ],
+      "codeHash": "3829963754b97c6c",
+      "trace": {
+        "entry": "pair_sum",
+        "args": "[3, 7, 1, 8], 10",
+        "result": "(3, 7)",
+        "truncated": false,
+        "states": [
+          {
+            "n": 1,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 2,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10"
+            }
+          },
+          {
+            "n": 2,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 3,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "set()"
+            }
+          },
+          {
+            "n": 3,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 4,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "set()",
+              "n": "3"
+            }
+          },
+          {
+            "n": 4,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 5,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "set()",
+              "n": "3",
+              "need": "7"
+            }
+          },
+          {
+            "n": 5,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 7,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "set()",
+              "n": "3",
+              "need": "7"
+            }
+          },
+          {
+            "n": 6,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 3,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "{3}",
+              "n": "3",
+              "need": "7"
+            }
+          },
+          {
+            "n": 7,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 4,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "{3}",
+              "n": "7",
+              "need": "7"
+            }
+          },
+          {
+            "n": 8,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 5,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "{3}",
+              "n": "7",
+              "need": "3"
+            }
+          },
+          {
+            "n": 9,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 6,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "{3}",
+              "n": "7",
+              "need": "3"
+            }
+          },
+          {
+            "n": 10,
+            "event": "return",
+            "func": "pair_sum",
+            "line": 6,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "{3}",
+              "n": "7",
+              "need": "3"
+            },
+            "returns": "(3, 7)"
+          }
+        ]
+      },
+      "traceHash": "9eece00368fb8942",
+      "durationInFrames": 745
+    },
+    {
+      "type": "bullets",
+      "title": "What the trace proved",
+      "steps": [
+        {
+          "item": "It stores, then finds",
+          "narration": "The set grew with three, and seven's partner was waiting inside it.",
+          "audioFile": "audio/scene-3-step-0.wav",
+          "audioSeconds": 3.72,
+          "startFrame": 16,
+          "frames": 112
+        },
+        {
+          "item": "Early exit is honest",
+          "narration": "The return state shows the exact pair, with nothing hidden in between.",
+          "audioFile": "audio/scene-3-step-1.wav",
+          "audioSeconds": 4.36,
+          "startFrame": 134,
+          "frames": 131
+        }
+      ],
+      "durationInFrames": 295
+    }
+  ]
+}

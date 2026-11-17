@@ -1,0 +1,90 @@
+[
+  {
+    "scene": 0,
+    "voice": "alba",
+    "text": "Have you ever wondered what that little padlo...",
+    "audioSeconds": 5.32,
+    "audioFrames": 160,
+    "durationInFrames": 194,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 1,
+    "voice": "alba",
+    "text": "Plain HTTP sends everything as plain text. On...",
+    "audioSeconds": 7.96,
+    "audioFrames": 239,
+    "durationInFrames": 273,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 2,
+    "voice": "alba",
+    "text": "HTTPS starts with a quick handshake. The brow...",
+    "audioSeconds": 9.96,
+    "audioFrames": 299,
+    "durationInFrames": 333,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 3,
+    "voice": "alba",
+    "text": "Today, more than ninety five percent of page ...",
+    "audioSeconds": 7,
+    "audioFrames": 210,
+    "durationInFrames": 244,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 4,
+    "voice": "alba",
+    "text": "On Chrome, encrypted traffic grew from around...",
+    "audioSeconds": 7.4,
+    "audioFrames": 222,
+    "durationInFrames": 256,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 5,
+    "voice": "alba",
+    "text": "Certificates come from certificate authoritie...",
+    "audioSeconds": 9.72,
+    "audioFrames": 292,
+    "durationInFrames": 326,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 6,
+    "voice": "alba",
+    "text": "One number is worth remembering. HTTPS always...",
+    "audioSeconds": 7.88,
+    "audioFrames": 237,
+    "durationInFrames": 271,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": false
+  },
+  {
+    "scene": 7,
+    "voice": "alba",
+    "text": "So next time you log in, glance for the padlo...",
+    "audioSeconds": 7.32,
+    "audioFrames": 220,
+    "durationInFrames": 266,
+    "tail": 30,
+    "marginFrames": 30,
+    "cached": false
+  }
+]

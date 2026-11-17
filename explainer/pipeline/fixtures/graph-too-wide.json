@@ -1,0 +1,204 @@
+{
+  "title": "Graph too wide",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Too Wide",
+      "narration": "This next script should fail validation because its labels are simply far too long to fit."
+    },
+    {
+      "type": "graph",
+      "title": "Ten services, fourteen calls",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "n0",
+          "label": "Authentication Service",
+          "kind": "start"
+        },
+        {
+          "id": "n1",
+          "label": "Request Handler Unit",
+          "kind": "process"
+        },
+        {
+          "id": "n2",
+          "label": "Permission Checker",
+          "kind": "process"
+        },
+        {
+          "id": "n3",
+          "label": "Token Refresh Worker",
+          "kind": "process"
+        },
+        {
+          "id": "n4",
+          "label": "Session Store Node",
+          "kind": "decision"
+        },
+        {
+          "id": "n5",
+          "label": "Metrics Collector",
+          "kind": "process"
+        },
+        {
+          "id": "n6",
+          "label": "Audit Trail Writer",
+          "kind": "process"
+        },
+        {
+          "id": "n7",
+          "label": "Feature Flag Proxy",
+          "kind": "process"
+        },
+        {
+          "id": "n8",
+          "label": "Rate Limiter Gate",
+          "kind": "process"
+        },
+        {
+          "id": "n9",
+          "label": "Notification Sender",
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n0",
+          "to": "n1"
+        },
+        {
+          "from": "n0",
+          "to": "n2"
+        },
+        {
+          "from": "n1",
+          "to": "n3"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        },
+        {
+          "from": "n4",
+          "to": "n5",
+          "label": "yes"
+        },
+        {
+          "from": "n4",
+          "to": "n6",
+          "label": "no"
+        },
+        {
+          "from": "n7",
+          "to": "n8"
+        },
+        {
+          "from": "n8",
+          "to": "n9"
+        },
+        {
+          "from": "n1",
+          "to": "n5"
+        },
+        {
+          "from": "n2",
+          "to": "n6"
+        },
+        {
+          "from": "n6",
+          "to": "n7"
+        },
+        {
+          "from": "n3",
+          "to": "n9"
+        },
+        {
+          "from": "n5",
+          "to": "n7"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "Ten services, fourteen calls: this is the stress map that pushes every single limit we set.",
+          "focus": [
+            "n0",
+            "n0->n1",
+            "n1"
+          ]
+        },
+        {
+          "narration": "Authentication hands off to the handler, while permissions shadow it on a side path.",
+          "focus": [
+            "n0",
+            "n0->n2",
+            "n2"
+          ]
+        },
+        {
+          "narration": "The handler and permissions both feed the token refresh worker downstream.",
+          "focus": [
+            "n1",
+            "n1->n3",
+            "n3"
+          ]
+        },
+        {
+          "narration": "Permissions also reach the token worker, which now gathers every upstream call.",
+          "focus": [
+            "n2",
+            "n2->n3",
+            "n3"
+          ]
+        },
+        {
+          "narration": "The token worker reaches the session store, where the big decision happens.",
+          "focus": [
+            "n3",
+            "n3->n4",
+            "n4"
+          ]
+        },
+        {
+          "narration": "Good traffic flows yes into metrics, while the no branch goes to the audit writer.",
+          "focus": [
+            "n4",
+            "n4->n5",
+            "n5"
+          ]
+        },
+        {
+          "narration": "Audit trails also land in the feature flag proxy, joining the metrics stream.",
+          "focus": [
+            "n4",
+            "n4->n6",
+            "n6"
+          ]
+        },
+        {
+          "narration": "Flags gate the rate limiter, and one shortcut sends alerts to the sender at the end.",
+          "focus": [
+            "n7",
+            "n7->n8",
+            "n8",
+            "n8->n9",
+            "n1->n5",
+            "n2->n6",
+            "n6->n7",
+            "n3->n9",
+            "n5->n7"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "text": "Rejected",
+      "narration": "Nothing renders here, the validator stops this script before the pipeline ever begins."
+    }
+  ]
+}

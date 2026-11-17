@@ -1,0 +1,9 @@
+{
+  "scenes": [
+    {"type": "title", "text": "How Vaccines Work", "subtitle": "A 30-second explainer", "durationInFrames": 90},
+    {"type": "flow", "title": "The process", "steps": ["Weakened virus", "Immune response", "Antibodies"], "durationInFrames": 120},
+    {"type": "stat", "value": 95, "suffix": "%", "label": "reduction in severe cases", "durationInFrames": 90},
+    {"type": "chart", "title": "Cases per 100k", "data": [{"label": "2019", "value": 80}, {"label": "2020", "value": 55}, {"label": "2021", "value": 30}, {"label": "2022", "value": 12}], "durationInFrames": 120},
+    {"type": "bullets", "title": "Key takeaways", "items": ["Trains your immune system", "Safe and tested", "Protects the community"], "durationInFrames": 120}
+  ]
+}

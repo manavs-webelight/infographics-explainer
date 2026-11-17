@@ -1,0 +1,47 @@
+  start      visible=True cyan=  6 orange=  0 OK
+  fetch      visible=True cyan=  0 orange=  8 OK
+  parse      visible=True cyan=  0 orange=  8 OK
+  draw       visible=False cyan=  0 orange=  0 CHECK
+  end        visible=False cyan=  0 orange=  0 CHECK
+LINEAR: frame=338 all-visible=False in-bounds=True measured-font=32px
+  recv       visible=True cyan=  6 orange=  0 OK
+  chk        visible=True cyan=  8 orange=  0 OK
+  save       visible=True cyan=  0 orange=  8 OK
+  report     visible=True cyan=  6 orange=  0 OK
+  bye        visible=True cyan=  0 orange=  8 OK
+BRANCH: frame=1045 all-visible=True in-bounds=True measured-font=32px
+  web        visible=True cyan= 14 orange=  0 OK
+  cdn        visible=True cyan= 22 orange=  0 OK
+  gw         visible=True cyan= 14 orange=  0 OK
+  auth       visible=True cyan= 14 orange=  0 OK
+  users      visible=True cyan= 12 orange= 10 OK
+  orders     visible=True cyan= 12 orange= 10 OK
+  db         visible=True cyan=  0 orange=  8 OK
+  cache      visible=True cyan= 14 orange=  0 OK
+ARCH: frame=2135 all-visible=True in-bounds=True measured-font=31px
+  a          visible=True cyan= 15 orange=  0 OK
+  b          visible=True cyan= 14 orange=  0 OK
+  c          visible=True cyan= 14 orange=  0 OK
+  d          visible=True cyan= 14 orange=  0 OK
+  e          visible=True cyan= 23 orange=  0 OK
+  f          visible=True cyan=  4 orange= 10 OK
+  g          visible=True cyan=  4 orange= 10 OK
+  h          visible=True cyan=  6 orange=  0 OK
+  i          visible=True cyan=  6 orange=  0 OK
+  j          visible=True cyan=  0 orange=  8 OK
+STRESS (10 nodes, 14 edges MAX): frame=1148 all-visible=True in-bounds=True measured-font=32px
+OCR out/m6b-arch.png: —-  A small architecture
+OCR out/m6b-stress.png: —-  Ten services | fourteen calls  —
+--- OCR arch crop (31px labels) ---
+Browser
+--- OCR stress crop (32px labels, MAX graph) ---
+--- arch (inverted+normalized) ---
+Browser
+--- stress (inverted+normalized) ---
+  File "<stdin>", line 16
+    fc = ','.join(f"[0:v]crop=w={w}:h={h}:x={x}:y={y}[v{i]]" for i,(x,y,w,h) in enumerate(boxes)) + \
+                                                             ^^^
+SyntaxError: f-string: unmatched ']'
+--- OCR active 32px labels, stress MAX graph, step 0 (frames: 226 ) ---
+Web frontend
+API worker A

@@ -1,0 +1,64 @@
+{
+  "title": "Trace fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Under The Hood",
+      "narration": "Same function, new eyes: watch the variables change one recorded step at a time."
+    },
+    {
+      "type": "trace",
+      "title": "Watch it run: target ten",
+      "lang": "python",
+      "code": "def pair_sum(nums, target):\n    seen = set()\n    for n in nums:\n        need = target - n\n        if need in seen:\n            return (need, n)\n        seen.add(n)\n    return None",
+      "source": "snippets/pair_sum.py",
+      "entry": "pair_sum",
+      "args": "[3, 7, 1, 8], 10",
+      "steps": [
+        {
+          "narration": "First recorded state, empty set, numbers in hand.",
+          "toState": 1
+        },
+        {
+          "narration": "Second state adds the seen set, but the hash is wrong on purpose.",
+          "toState": 2
+        }
+      ],
+      "trace": {
+        "entry": "pair_sum",
+        "args": "[3, 7, 1, 8], 10",
+        "result": "(3, 7)",
+        "truncated": false,
+        "states": [
+          {
+            "n": 1,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 2,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10"
+            }
+          },
+          {
+            "n": 2,
+            "event": "line",
+            "func": "pair_sum",
+            "line": 3,
+            "vars": {
+              "nums": "[3, 7, 1, 8]",
+              "target": "10",
+              "seen": "set()"
+            }
+          }
+        ]
+      },
+      "traceHash": "0000000000000000"
+    },
+    {
+      "type": "title",
+      "text": "One Pass Proven",
+      "narration": "The trace shows every state between the first number and the returned pair, honestly."
+    }
+  ]
+}

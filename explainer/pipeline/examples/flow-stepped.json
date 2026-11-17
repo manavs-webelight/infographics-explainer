@@ -1,0 +1,18 @@
+{
+ "type": "flow",
+ "title": "The method",
+ "steps": [
+  {
+   "item": "Boil water",
+   "narration": "First, bring fresh water to a rolling boil."
+  },
+  {
+   "item": "Add tea",
+   "narration": "Next, add one spoon of tea leaves for each cup."
+  },
+  {
+   "item": "Steep and serve",
+   "narration": "Finally, let it steep three minutes, then pour and enjoy."
+  }
+ ]
+}

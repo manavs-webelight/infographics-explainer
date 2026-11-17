@@ -1,0 +1,40 @@
+{
+  "title": "How vaccines work",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Vaccines Work",
+      "subtitle": "A three-scene audio test",
+      "narration": "Welcome to a short test video about how vaccines teach your body to defend itself.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 4.2,
+      "durationInFrames": 160
+    },
+    {
+      "type": "flow",
+      "title": "The process",
+      "steps": [
+        "Harmless piece",
+        "Immune response",
+        "Antibodies"
+      ],
+      "narration": "A vaccine shows your immune system a harmless piece of a virus, which starts a response and builds protective antibodies.",
+      "audioFile": "audio/scene-1.wav",
+      "audioSeconds": 6.68,
+      "durationInFrames": 235
+    },
+    {
+      "type": "bullets",
+      "title": "Key takeaways",
+      "items": [
+        "Trains your immune system",
+        "Safe and heavily tested",
+        "Protects the community"
+      ],
+      "narration": "So vaccines train your immune system safely, and they help protect the whole community around you.",
+      "audioFile": "audio/scene-2.wav",
+      "audioSeconds": 5.56,
+      "durationInFrames": 213
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Graph fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Validation Works",
+      "narration": "A short walk through a tiny request lifecycle, one focus at a time."
+    },
+    {
+      "type": "graph",
+      "title": "Request lifecycle",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "client",
+          "label": "Browser",
+          "kind": "start"
+        },
+        {
+          "id": "server",
+          "label": "API server",
+          "kind": "process"
+        },
+        {
+          "id": "valid",
+          "label": "Valid?",
+          "kind": "decision"
+        },
+        {
+          "id": "store",
+          "label": "Save row",
+          "kind": "process"
+        },
+        {
+          "id": "done",
+          "label": "Render page",
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "from": "client",
+          "to": "server"
+        },
+        {
+          "from": "server",
+          "to": "valid"
+        },
+        {
+          "from": "valid",
+          "to": "client",
+          "label": "no"
+        },
+        {
+          "from": "valid",
+          "to": "store",
+          "label": "yes"
+        },
+        {
+          "from": "store",
+          "to": "done"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "The story starts when the browser sends a request across the network to a waiting server.",
+          "focus": [
+            "client",
+            "client->server"
+          ]
+        },
+        {
+          "narration": "The API server picks it up and asks one simple question: is this payload actually valid?",
+          "focus": [
+            "server",
+            "server->valid"
+          ]
+        },
+        {
+          "narration": "When the answer is no, the server sends a clear error straight back to the browser.",
+          "focus": [
+            "valid",
+            "valid->client"
+          ]
+        },
+        {
+          "narration": "When the answer is yes, the row is saved, and the finished page travels home as the rendered story.",
+          "focus": [
+            "valid->store",
+            "store",
+            "store->done",
+            "done"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Takeaways",
+      "steps": [
+        {
+          "item": "Check before storing",
+          "narration": "A quick validity check keeps bad data out of your database entirely."
+        },
+        {
+          "item": "Errors travel home too",
+          "narration": "A clear error back to the browser beats a silent failure every time."
+        }
+      ]
+    }
+  ]
+}

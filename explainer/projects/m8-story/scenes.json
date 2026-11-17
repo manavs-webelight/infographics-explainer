@@ -1,0 +1,888 @@
+{
+  "title": "Bracket balance, explained",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Did Someone Forget a Bracket?",
+      "narration": "Every code editor checks brackets instantly. Today, the small trick that does it: the strategy, the source, and a live trace of the failure case.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 9.16,
+      "durationInFrames": 309
+    },
+    {
+      "type": "graph",
+      "title": "The strategy",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "scan",
+          "kind": "start",
+          "label": "Read a char"
+        },
+        {
+          "id": "openQ",
+          "kind": "decision",
+          "label": "Open?"
+        },
+        {
+          "id": "deeper",
+          "kind": "process",
+          "label": "Add one"
+        },
+        {
+          "id": "closeQ",
+          "kind": "decision",
+          "label": "Close?"
+        },
+        {
+          "id": "less",
+          "kind": "process",
+          "label": "Take one"
+        },
+        {
+          "id": "neg",
+          "kind": "decision",
+          "label": "Negative?"
+        },
+        {
+          "id": "fin",
+          "kind": "decision",
+          "label": "Zero?"
+        },
+        {
+          "id": "fail",
+          "kind": "end",
+          "label": "Fail now"
+        },
+        {
+          "id": "ok",
+          "kind": "end",
+          "label": "Balanced"
+        }
+      ],
+      "edges": [
+        {
+          "from": "scan",
+          "to": "openQ"
+        },
+        {
+          "from": "openQ",
+          "to": "deeper",
+          "label": "yes"
+        },
+        {
+          "from": "deeper",
+          "to": "scan"
+        },
+        {
+          "from": "openQ",
+          "to": "closeQ",
+          "label": "no"
+        },
+        {
+          "from": "closeQ",
+          "to": "less",
+          "label": "yes"
+        },
+        {
+          "from": "closeQ",
+          "to": "scan",
+          "label": "no"
+        },
+        {
+          "from": "less",
+          "to": "neg"
+        },
+        {
+          "from": "neg",
+          "to": "fail",
+          "label": "yes"
+        },
+        {
+          "from": "neg",
+          "to": "scan",
+          "label": "keep going"
+        },
+        {
+          "from": "scan",
+          "to": "fin",
+          "label": "text done"
+        },
+        {
+          "from": "fin",
+          "to": "ok",
+          "label": "yes"
+        },
+        {
+          "from": "fin",
+          "to": "fail",
+          "label": "no"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "The walk reads the text one character at a time. If it is an opening bracket, depth gains one and the walk continues.",
+          "focus": [
+            "scan",
+            "scan->openQ",
+            "openQ",
+            "openQ->deeper",
+            "deeper",
+            "deeper->scan"
+          ],
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 6.6,
+          "startFrame": 16,
+          "frames": 198
+        },
+        {
+          "narration": "A closing bracket takes one off depth. If depth goes negative, a closer arrived with nothing open and the answer is false right away. Any other character simply keeps the walk going.",
+          "focus": [
+            "openQ->closeQ",
+            "closeQ",
+            "closeQ->less",
+            "less",
+            "less->neg",
+            "neg",
+            "neg->fail",
+            "neg->scan",
+            "closeQ->scan"
+          ],
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 10.44,
+          "startFrame": 220,
+          "frames": 314
+        },
+        {
+          "narration": "When the text runs out, one question remains: did depth come back to exactly zero? Zero means balanced, anything else means brackets were left open.",
+          "focus": [
+            "scan->fin",
+            "fin",
+            "fin->ok",
+            "ok",
+            "fin->fail",
+            "fail"
+          ],
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 9.56,
+          "startFrame": 540,
+          "frames": 287
+        }
+      ],
+      "durationInFrames": 845
+    },
+    {
+      "type": "code",
+      "title": "The whole trick, ten lines",
+      "lang": "python",
+      "code": "def is_balanced(text):\n    depth = 0\n    for ch in text:\n        if ch == '(':\n            depth += 1\n        elif ch == ')':\n            depth -= 1\n            if depth < 0:\n                return False\n    return depth == 0",
+      "steps": [
+        {
+          "narration": "The function holds a single number: how deeply nested inside brackets the scan currently is.",
+          "lines": [
+            1,
+            2
+          ],
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 5.32,
+          "startFrame": 16,
+          "frames": 160
+        },
+        {
+          "narration": "It walks the text one character at a time, no lookahead, no backtracking.",
+          "lines": [
+            3
+          ],
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 4.76,
+          "startFrame": 182,
+          "frames": 143
+        },
+        {
+          "narration": "An opening bracket simply deepens the nest: depth plus one, and on we go.",
+          "lines": [
+            4,
+            5
+          ],
+          "audioFile": "audio/scene-2-step-2.wav",
+          "audioSeconds": 5.8,
+          "startFrame": 331,
+          "frames": 174
+        },
+        {
+          "narration": "A closing bracket climbs back out. If depth falls below zero, the closer arrived with nothing open, and the function quits immediately with false.",
+          "lines": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "audioFile": "audio/scene-2-step-3.wav",
+          "audioSeconds": 8.52,
+          "startFrame": 511,
+          "frames": 256
+        },
+        {
+          "narration": "Reaching the end is only half the story: the text is balanced exactly when depth comes back down to zero.",
+          "lines": [
+            10
+          ],
+          "audioFile": "audio/scene-2-step-4.wav",
+          "audioSeconds": 6.6,
+          "startFrame": 773,
+          "frames": 198
+        }
+      ],
+      "tokens": [
+        [
+          [
+            "def",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "is_balanced",
+            "#B392F0"
+          ],
+          [
+            "(text):",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    depth ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "for",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " text:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "'('",
+            "#9ECBFF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            depth ",
+            "#E1E4E8"
+          ],
+          [
+            "+=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "1",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "elif",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "')'",
+            "#9ECBFF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            depth ",
+            "#E1E4E8"
+          ],
+          [
+            "-=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "1",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "            ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " depth ",
+            "#E1E4E8"
+          ],
+          [
+            "<",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "                ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "False",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " depth ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ]
+        ]
+      ],
+      "codeHash": "aeab719e239afa7b",
+      "durationInFrames": 989
+    },
+    {
+      "type": "trace",
+      "title": "Live trace: a) + b",
+      "lang": "python",
+      "code": "def is_balanced(text):\n    depth = 0\n    for ch in text:\n        if ch == '(':\n            depth += 1\n        elif ch == ')':\n            depth -= 1\n            if depth < 0:\n                return False\n    return depth == 0",
+      "source": "snippets/is_balanced.py",
+      "entry": "is_balanced",
+      "args": "\"a) + b\"",
+      "steps": [
+        {
+          "narration": "The input is the letter a, a closing parenthesis, then plus b. First the letter a arrives: neither branch matches, and depth stays at zero.",
+          "toState": 5,
+          "audioFile": "audio/scene-3-step-0.wav",
+          "audioSeconds": 9.56,
+          "startFrame": 16,
+          "frames": 287
+        },
+        {
+          "narration": "Then the closing parenthesis shows up. It is not an opener, so depth takes one step down and reads minus one.",
+          "toState": 9,
+          "audioFile": "audio/scene-3-step-1.wav",
+          "audioSeconds": 6.28,
+          "startFrame": 309,
+          "frames": 189
+        },
+        {
+          "narration": "The negative check fires before any other character is touched: the function returns false immediately, never looking at the rest of the text.",
+          "toState": 11,
+          "audioFile": "audio/scene-3-step-2.wav",
+          "audioSeconds": 7.16,
+          "startFrame": 504,
+          "frames": 215
+        }
+      ],
+      "tokens": [
+        [
+          [
+            "def",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "is_balanced",
+            "#B392F0"
+          ],
+          [
+            "(text):",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "    depth ",
+            "#E1E4E8"
+          ],
+          [
+            "=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "for",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "in",
+            "#F97583"
+          ],
+          [
+            " text:",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "'('",
+            "#9ECBFF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            depth ",
+            "#E1E4E8"
+          ],
+          [
+            "+=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "1",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "        ",
+            "#E1E4E8"
+          ],
+          [
+            "elif",
+            "#F97583"
+          ],
+          [
+            " ch ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "')'",
+            "#9ECBFF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "            depth ",
+            "#E1E4E8"
+          ],
+          [
+            "-=",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "1",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "            ",
+            "#E1E4E8"
+          ],
+          [
+            "if",
+            "#F97583"
+          ],
+          [
+            " depth ",
+            "#E1E4E8"
+          ],
+          [
+            "<",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ],
+          [
+            ":",
+            "#E1E4E8"
+          ]
+        ],
+        [
+          [
+            "                ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "False",
+            "#79B8FF"
+          ]
+        ],
+        [
+          [
+            "    ",
+            "#E1E4E8"
+          ],
+          [
+            "return",
+            "#F97583"
+          ],
+          [
+            " depth ",
+            "#E1E4E8"
+          ],
+          [
+            "==",
+            "#F97583"
+          ],
+          [
+            " ",
+            "#E1E4E8"
+          ],
+          [
+            "0",
+            "#79B8FF"
+          ]
+        ]
+      ],
+      "codeHash": "aeab719e239afa7b",
+      "trace": {
+        "entry": "is_balanced",
+        "args": "\"a) + b\"",
+        "result": "False",
+        "truncated": false,
+        "states": [
+          {
+            "n": 1,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 2,
+            "vars": {
+              "text": "'a) + b'"
+            }
+          },
+          {
+            "n": 2,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 3,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0"
+            }
+          },
+          {
+            "n": 3,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 4,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "'a'"
+            }
+          },
+          {
+            "n": 4,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 6,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "'a'"
+            }
+          },
+          {
+            "n": 5,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 3,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "'a'"
+            }
+          },
+          {
+            "n": 6,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 4,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "')'"
+            }
+          },
+          {
+            "n": 7,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 6,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "')'"
+            }
+          },
+          {
+            "n": 8,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 7,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "0",
+              "ch": "')'"
+            }
+          },
+          {
+            "n": 9,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 8,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "-1",
+              "ch": "')'"
+            }
+          },
+          {
+            "n": 10,
+            "event": "line",
+            "func": "is_balanced",
+            "line": 9,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "-1",
+              "ch": "')'"
+            }
+          },
+          {
+            "n": 11,
+            "event": "return",
+            "func": "is_balanced",
+            "line": 9,
+            "vars": {
+              "text": "'a) + b'",
+              "depth": "-1",
+              "ch": "')'"
+            },
+            "returns": "False"
+          }
+        ]
+      },
+      "traceHash": "cc9c7ef90a360119",
+      "durationInFrames": 737
+    },
+    {
+      "type": "bullets",
+      "title": "Why it works",
+      "steps": [
+        {
+          "item": "Fail fast",
+          "narration": "A negative depth proves a closer had no opener, so the answer can never change anymore.",
+          "audioFile": "audio/scene-4-step-0.wav",
+          "audioSeconds": 4.92,
+          "startFrame": 16,
+          "frames": 148
+        },
+        {
+          "item": "Zero at the end",
+          "narration": "A final depth of zero means every bracket found its partner, in the right order.",
+          "audioFile": "audio/scene-4-step-1.wav",
+          "audioSeconds": 4.52,
+          "startFrame": 170,
+          "frames": 136
+        }
+      ],
+      "durationInFrames": 336
+    }
+  ]
+}

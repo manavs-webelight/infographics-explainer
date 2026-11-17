@@ -1,0 +1,73 @@
+{
+  "id": "https-01",
+  "createdAt": "2026-11-16T15:14:59.493Z",
+  "voice": "alba",
+  "draft": false,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0.1
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "done",
+      "seconds": 208.8
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 323.9
+    }
+  ],
+  "retries": 0,
+  "claims": [
+    {
+      "scene": 3,
+      "kind": "stat",
+      "number": "95%",
+      "label": "of Chrome page loads are HTTPS"
+    },
+    {
+      "scene": 4,
+      "kind": "chart",
+      "title": "Share of Chrome traffic",
+      "points": [
+        {
+          "label": "2015",
+          "value": 52
+        },
+        {
+          "label": "2019",
+          "value": 81
+        },
+        {
+          "label": "2022",
+          "value": 93
+        },
+        {
+          "label": "2025",
+          "value": 96
+        }
+      ]
+    },
+    {
+      "scene": 6,
+      "kind": "stat",
+      "number": "443",
+      "label": "the port HTTPS always uses"
+    }
+  ],
+  "output": "projects/https-01/video.mp4",
+  "totalFrames": 2079,
+  "totalSeconds": 69.3,
+  "status": "ok",
+  "summary": "done"
+}

@@ -1,0 +1,104 @@
+{
+  "title": "Graph fixtures",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "How Validation Works",
+      "narration": "A short walk through a tiny request lifecycle, one focus at a time."
+    },
+    {
+      "type": "graph",
+      "title": "Request lifecycle",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "client",
+          "label": "Browser",
+          "kind": "start"
+        },
+        {
+          "id": "server",
+          "label": "API server",
+          "kind": "process"
+        },
+        {
+          "id": "valid",
+          "label": "Valid?",
+          "kind": "decision"
+        },
+        {
+          "id": "server",
+          "label": "Save row",
+          "kind": "process"
+        },
+        {
+          "id": "done",
+          "label": "Render page",
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "from": "client",
+          "to": "server"
+        },
+        {
+          "from": "server",
+          "to": "valid"
+        },
+        {
+          "from": "valid",
+          "to": "client",
+          "label": "no"
+        },
+        {
+          "from": "valid",
+          "to": "store",
+          "label": "yes"
+        },
+        {
+          "from": "store",
+          "to": "done"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "The browser sends a plain request, and the first server node receives it now.",
+          "focus": [
+            "client",
+            "client->server"
+          ]
+        },
+        {
+          "narration": "Both process boxes below share an id, which the validator must reject outright.",
+          "focus": [
+            "server",
+            "server->valid"
+          ]
+        },
+        {
+          "narration": "The remaining steps stay valid so only the duplicate id error shows up here.",
+          "focus": [
+            "valid",
+            "store",
+            "done"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "bullets",
+      "title": "Takeaways",
+      "steps": [
+        {
+          "item": "Check before storing",
+          "narration": "A quick validity check keeps bad data out of your database entirely."
+        },
+        {
+          "item": "Errors travel home too",
+          "narration": "A clear error back to the browser beats a silent failure every time."
+        }
+      ]
+    }
+  ]
+}
