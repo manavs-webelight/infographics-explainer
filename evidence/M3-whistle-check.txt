@@ -1,4 +1,0 @@
-last scene starts at 11.73s
-{
- "text": "So vaccines train your immune system safely and they help protect the whole community around you."
-}

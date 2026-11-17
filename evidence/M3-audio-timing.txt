@@ -1,5 +1,0 @@
-[audio] done: 3 scenes | scene | audio_s | audio_fr | dur_fr | lead+tail | margin_fr (needs >= 12)
-[audio] scene 0 (cached): 3.88s audio=117f scene=151f lead=16 tail=18 margin=18f
-[audio] scene 1 (cached): 6.36s audio=191f scene=225f lead=16 tail=18 margin=18f
-[audio] scene 2 (cached): 4.68s audio=141f scene=187f lead=16 tail=30 margin=30f
-[audio] total composition length: 539 frames (18.0s)

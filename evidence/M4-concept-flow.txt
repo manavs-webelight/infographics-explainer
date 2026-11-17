@@ -1,4 +1,0 @@
-=== F. --concept flow (no scenes yet) ===
-[setup] ok, concept.txt written
-[make] FAILED: no scenes.json and no --from-scenes: write projects/<id>/scenes.json (agent step) or pass --from-scenes
-exit=0
