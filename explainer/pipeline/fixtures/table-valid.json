@@ -1,0 +1,69 @@
+{
+ "title": "Table test",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "Comparing Two Things",
+   "narration": "A short test of the table scene, one highlighted row at a time."
+  },
+  {
+   "type": "table",
+   "title": "Two pipelines side by side",
+   "columns": [
+    "Feature",
+    "Version one",
+    "Version two"
+   ],
+   "rows": [
+    [
+     "Score",
+     "Out of ten",
+     "Out of one hundred"
+    ],
+    [
+     "Who sets it",
+     "The model",
+     "Code, from issues"
+    ],
+    [
+     "Crash recovery",
+     "no",
+     "yes"
+    ],
+    [
+     "Fix bot",
+     "yes",
+     "no"
+    ]
+   ],
+   "steps": [
+    {
+     "row": 1,
+     "narration": "Version one scores out of ten, while version two scores out of one hundred."
+    },
+    {
+     "row": 3,
+     "narration": "Only version two can resume a review after a worker crash."
+    },
+    {
+     "col": 3,
+     "narration": "Reading down the last column shows what version two adds and what it drops."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Takeaways",
+   "steps": [
+    {
+     "item": "Rows read across",
+     "narration": "Each row compares one feature across every column of the table."
+    },
+    {
+     "item": "Columns read down",
+     "narration": "A highlighted column shows how one option behaves in every row."
+    }
+   ]
+  }
+ ]
+}

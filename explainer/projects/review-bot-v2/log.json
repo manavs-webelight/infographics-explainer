@@ -1,0 +1,83 @@
+{
+  "id": "review-bot-v2",
+  "createdAt": "2026-11-22T19:43:28.834Z",
+  "voice": "alba",
+  "draft": false,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "highlight",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "trace",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "cached",
+      "seconds": 1
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 111.2
+    }
+  ],
+  "retries": 0,
+  "claims": [
+    {
+      "scene": 3,
+      "kind": "stat",
+      "number": "100",
+      "label": "Every run starts at a score of one hundred"
+    },
+    {
+      "scene": 4,
+      "kind": "chart",
+      "title": "Penalty per issue",
+      "points": [
+        {
+          "label": "Critical",
+          "value": 25
+        },
+        {
+          "label": "High",
+          "value": 15
+        },
+        {
+          "label": "Medium",
+          "value": 6
+        },
+        {
+          "label": "Low",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "scene": 6,
+      "kind": "stat",
+      "number": "80%",
+      "label": "Files the agent must inspect for a clean run"
+    }
+  ],
+  "output": "projects/review-bot-v2/video.mp4",
+  "totalFrames": 3191,
+  "totalSeconds": 106.4,
+  "status": "ok",
+  "summary": "done"
+}

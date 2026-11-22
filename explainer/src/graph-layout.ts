@@ -18,7 +18,7 @@ export type LayoutEdge = {from: string; to: string; label?: string};
 export const MIN_FONT = 28;
 export const NODE_SEP = 40;
 export const RANK_SEP = 60;
-export const MAX_SCALE = 1.15;
+export const MAX_SCALE = 1.6;
 
 export const nodeSize = (n: LayoutNode): {width: number; height: number} => {
   const est = n.label.length * 17 + 56;

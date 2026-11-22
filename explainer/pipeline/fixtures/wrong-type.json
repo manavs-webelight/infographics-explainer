@@ -8,7 +8,7 @@
    "narration": "Welcome to this short explainer on how vaccines train your immune system step by step."
   },
   {
-   "type": "timeline",
+   "type": "carousel",
    "year": "1796",
    "event": "Jenner's smallpox vaccine",
    "narration": "The very first vaccine was given in seventeen ninety six by Edward Jenner in England."

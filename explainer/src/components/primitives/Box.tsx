@@ -12,9 +12,9 @@ export const Box: React.FC<{
   active: boolean;
   label: string;
   fontSize?: number;
-}> = ({kind, width, height, borderColor = theme.accent, active, label, fontSize = 28}) => {
+}> = ({kind, width, height, borderColor = theme.line, active, label, fontSize = 28}) => {
   const fs = Math.max(28, fontSize); // hard rule: no scene text under 28px
-  const border = active ? theme.accent2 : borderColor;
+  const border = active ? theme.accent : borderColor;
   const labelStyle: React.CSSProperties = {
     position: 'absolute',
     inset: 0,
@@ -52,7 +52,7 @@ export const Box: React.FC<{
         background: theme.card,
         border: `${active ? 4 : 3}px solid ${border}`,
         borderRadius: kind === 'pill' ? height / 2 : 18,
-        boxShadow: active ? `0 0 44px ${theme.accent2}44` : 'none',
+        boxShadow: theme.shadow,
       }}
     >
       <div style={labelStyle}>{label}</div>

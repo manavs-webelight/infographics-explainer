@@ -1,0 +1,150 @@
+{
+  "title": "Timeline gate",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Timeline Scene Gate",
+      "narration": "A short gate for the new timeline scene, shown at its largest size and at a normal size.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 5.4,
+      "durationInFrames": 196
+    },
+    {
+      "type": "timeline",
+      "title": "The largest timeline that fits",
+      "steps": [
+        {
+          "when": "alpha bravo ch",
+          "label": "ha bravo charlie delta echo foxtrotx",
+          "detail": "bravo charlie delta echo foxtrot golf hotel indi",
+          "narration": "First comes the earliest event, drawn on the left end of the line.",
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 3.96,
+          "startFrame": 16,
+          "frames": 119
+        },
+        {
+          "when": "ha bravo charl",
+          "label": "bravo charlie delta echo foxtrot gol",
+          "detail": "vo charlie delta echo foxtrot golf hotel india j",
+          "narration": "Next the second event appears below the line, with its detail underneath.",
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 4.28,
+          "startFrame": 141,
+          "frames": 129
+        },
+        {
+          "when": "bravo charliex",
+          "label": "vo charlie delta echo foxtrot golf h",
+          "detail": "charlie delta echo foxtrot golf hotel india juli",
+          "narration": "The third event goes back above the line and the filled axis grows to it.",
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 3.64,
+          "startFrame": 276,
+          "frames": 110
+        },
+        {
+          "when": "vo charlie del",
+          "label": "charlie delta echo foxtrot golf hote",
+          "detail": "rlie delta echo foxtrot golf hotel india julietx",
+          "narration": "Then the fourth event, which sits below the line again, takes its turn.",
+          "audioFile": "audio/scene-1-step-3.wav",
+          "audioSeconds": 3.8,
+          "startFrame": 392,
+          "frames": 114
+        },
+        {
+          "when": "charlie deltax",
+          "label": "rlie delta echo foxtrot golf hotel i",
+          "detail": "e delta echo foxtrot golf hotel india juliet kil",
+          "narration": "The fifth event is above the line, close to the right hand side.",
+          "audioFile": "audio/scene-1-step-4.wav",
+          "audioSeconds": 3.32,
+          "startFrame": 512,
+          "frames": 100
+        },
+        {
+          "when": "rlie delta ech",
+          "label": "e delta echo foxtrot golf hotel indi",
+          "detail": "elta echo foxtrot golf hotel india juliet kilo l",
+          "narration": "Last of all the sixth event closes the line at the far right end.",
+          "audioFile": "audio/scene-1-step-5.wav",
+          "audioSeconds": 4.12,
+          "startFrame": 618,
+          "frames": 124
+        }
+      ],
+      "durationInFrames": 760
+    },
+    {
+      "type": "timeline",
+      "title": "A product launch in four weeks",
+      "steps": [
+        {
+          "when": "Week one",
+          "label": "Plan and scope",
+          "detail": "Agree the goals and the date",
+          "narration": "The first week is for planning, agreeing the goals, and fixing the launch date.",
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 4.52,
+          "startFrame": 16,
+          "frames": 136
+        },
+        {
+          "when": "Week two",
+          "label": "Build the core",
+          "detail": "Ship the main flow end to end",
+          "narration": "In week two the team builds the core flow and gets it working from start to end.",
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 4.28,
+          "startFrame": 158,
+          "frames": 129
+        },
+        {
+          "when": "Week three",
+          "label": "Test with users",
+          "detail": "Fix what the testers find",
+          "narration": "Week three puts the product in front of testers, and the team fixes what they find.",
+          "audioFile": "audio/scene-2-step-2.wav",
+          "audioSeconds": 4.76,
+          "startFrame": 293,
+          "frames": 143
+        },
+        {
+          "when": "Week four",
+          "label": "Launch",
+          "detail": "Announce and watch the numbers",
+          "narration": "Finally the launch goes out, and the team watches the first numbers come in.",
+          "audioFile": "audio/scene-2-step-3.wav",
+          "audioSeconds": 3.96,
+          "startFrame": 442,
+          "frames": 119
+        }
+      ],
+      "durationInFrames": 579
+    },
+    {
+      "type": "bullets",
+      "title": "Takeaways",
+      "steps": [
+        {
+          "item": "Read left to right",
+          "narration": "Time runs from the left end of the line to the right end.",
+          "audioFile": "audio/scene-3-step-0.wav",
+          "audioSeconds": 2.92,
+          "startFrame": 16,
+          "frames": 88
+        },
+        {
+          "item": "One event at a time",
+          "narration": "Each event appears as it is explained, with the line filling up to it.",
+          "audioFile": "audio/scene-3-step-1.wav",
+          "audioSeconds": 4.04,
+          "startFrame": 110,
+          "frames": 122
+        }
+      ],
+      "durationInFrames": 262
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+ "title": "Sequence test",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "One Request, In Order",
+   "narration": "A short test of the sequence scene, showing who talks to whom, step by step."
+  },
+  {
+   "type": "sequence",
+   "title": "What happens on a request",
+   "actors": [
+    {
+     "id": "a",
+     "label": "One"
+    },
+    {
+     "id": "b",
+     "label": "Two"
+    },
+    {
+     "id": "c",
+     "label": "Three"
+    },
+    {
+     "id": "d",
+     "label": "Four"
+    },
+    {
+     "id": "e",
+     "label": "Five"
+    }
+   ],
+   "messages": [
+    {
+     "from": "a",
+     "to": "b",
+     "label": "A message that is far too long"
+    },
+    {
+     "from": "b",
+     "to": "c",
+     "label": "Fine"
+    }
+   ],
+   "steps": [
+    {
+     "toMessage": 1,
+     "narration": "The first actor sends a message to the second actor in the row."
+    },
+    {
+     "toMessage": 2,
+     "narration": "The second actor passes it along to the third actor in the row."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Takeaways",
+   "steps": [
+    {
+     "item": "Read it top to bottom",
+     "narration": "Time runs from the top of the diagram down to the bottom."
+    },
+    {
+     "item": "Arrows are messages",
+     "narration": "Each arrow is one message from one actor to another actor."
+    }
+   ]
+  }
+ ]
+}

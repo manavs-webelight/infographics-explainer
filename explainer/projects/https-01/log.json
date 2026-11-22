@@ -1,6 +1,6 @@
 {
   "id": "https-01",
-  "createdAt": "2026-11-16T15:14:59.493Z",
+  "createdAt": "2026-11-22T19:48:10.377Z",
   "voice": "alba",
   "draft": false,
   "force": false,
@@ -9,7 +9,7 @@
     {
       "name": "setup",
       "status": "done",
-      "seconds": 0.1
+      "seconds": 0
     },
     {
       "name": "script",
@@ -17,14 +17,24 @@
       "seconds": 0
     },
     {
+      "name": "highlight",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "trace",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
       "name": "audio",
-      "status": "done",
-      "seconds": 208.8
+      "status": "cached",
+      "seconds": 0.5
     },
     {
       "name": "render",
       "status": "done",
-      "seconds": 323.9
+      "seconds": 73.8
     }
   ],
   "retries": 0,

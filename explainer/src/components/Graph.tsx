@@ -102,7 +102,7 @@ export const Graph: React.FC<any> = (props) => {
           }}
         >
           <div style={{width: 72, height: 8, background: theme.accent, borderRadius: 4, marginBottom: 18}} />
-          <div style={{fontSize: 64, fontWeight: 800, color: theme.text}}>{title}</div>
+          <div style={{fontSize: 64, fontWeight: 700, color: theme.text}}>{title}</div>
         </div>
       )}
       <AbsoluteFill>
@@ -121,10 +121,10 @@ export const Graph: React.FC<any> = (props) => {
               extrapolateRight: 'clamp',
             });
             const on = active.has(key);
-            const color = on ? theme.accent2 : theme.muted;
+            const color = on ? theme.accent : theme.line;
             const mid = pts[Math.floor((pts.length - 1) / 2)];
             return (
-              <g key={key} opacity={revealFade(from) * (on ? 1 : 0.35)}>
+              <g key={key} opacity={revealFade(from) * (on ? 1 : 0.55)}>
                 <Arrow points={pts} progress={progress} color={color} />
                 {e.label && progress > 0.5 && (
                   <text

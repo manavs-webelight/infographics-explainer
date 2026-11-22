@@ -1,0 +1,118 @@
+[
+  {
+    "scene": 0,
+    "voice": "alba",
+    "audioSeconds": 4.68,
+    "audioFrames": 141,
+    "durationInFrames": 175,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true
+  },
+  {
+    "scene": 1,
+    "voice": "alba",
+    "audioSeconds": 20.680000000000003,
+    "audioFrames": 647,
+    "durationInFrames": 681,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 4.04,
+        "startFrame": 16,
+        "frames": 122,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.92,
+        "startFrame": 144,
+        "frames": 148,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 4.44,
+        "startFrame": 298,
+        "frames": 134,
+        "cached": true
+      },
+      {
+        "step": 3,
+        "audioSeconds": 3.16,
+        "startFrame": 438,
+        "frames": 95,
+        "cached": true
+      },
+      {
+        "step": 4,
+        "audioSeconds": 4.12,
+        "startFrame": 539,
+        "frames": 124,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 2,
+    "voice": "alba",
+    "audioSeconds": 10.440000000000001,
+    "audioFrames": 326,
+    "durationInFrames": 360,
+    "tail": 18,
+    "marginFrames": 18,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 3.24,
+        "startFrame": 16,
+        "frames": 98,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 4.2,
+        "startFrame": 120,
+        "frames": 126,
+        "cached": true
+      },
+      {
+        "step": 2,
+        "audioSeconds": 3,
+        "startFrame": 252,
+        "frames": 90,
+        "cached": true
+      }
+    ]
+  },
+  {
+    "scene": 3,
+    "voice": "alba",
+    "audioSeconds": 6.8,
+    "audioFrames": 210,
+    "durationInFrames": 256,
+    "tail": 30,
+    "marginFrames": 30,
+    "cached": true,
+    "steps": [
+      {
+        "step": 0,
+        "audioSeconds": 3,
+        "startFrame": 16,
+        "frames": 90,
+        "cached": true
+      },
+      {
+        "step": 1,
+        "audioSeconds": 3.8,
+        "startFrame": 112,
+        "frames": 114,
+        "cached": true
+      }
+    ]
+  }
+]

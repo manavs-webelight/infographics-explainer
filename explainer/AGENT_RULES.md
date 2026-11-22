@@ -102,11 +102,85 @@ When the user gives a video topic, ALWAYS, in this order:
 2. Write `projects/<id>/scenes.json` following the story template above.
 3. `npm run validate -- projects/<id>/scenes.json` (self-fix max 2 attempts,
    then show the error list and stop).
-4. Render a DRAFT: `npm run make -- --id <id> --draft` (+ contact sheet) and
-   show the user the contact-sheet path and video path.
+4. Render a DRAFT: `npm run make -- --id <id> --draft` (it also writes
+   `projects/<id>/contact-sheet.png`) and show the user both paths.
 5. WAIT for the user's explicit OK on the draft.
 6. Only then render the final: `npm run make -- --id <id>` (1080p crf 18).
 NEVER render a final without the user's OK on the draft.
 
 Stat/chart scenes: list every number as a claim + its source for the user
 BEFORE rendering, and record the claims in `log.json`. Never invent numbers.
+
+## Fast path and timings (measured on this machine, 2 render workers)
+
+- ONE command does everything after validation: `npm run make -- --id <id> --draft`
+  (validate check, highlight, trace, audio, render, contact sheet). Re-run the
+  same command after any failure; finished steps are cached.
+- Expect, for a video of about 105 s: draft render about 85 s, contact sheet
+  about 8 s, final 1080p render about 110 s, narration about 30 s the first time
+  (cached after). `log.json` step seconds are real seconds.
+- To re-render ONLY the video (theme or layout change): delete or move
+  `projects/<id>/video.mp4` and run `make` again. NEVER use `--force` for this:
+  it re-synthesizes the narration (new, different takes).
+- Voice server: `pocket-tts serve` listens on port 8000 by default. If another
+  service owns that port you get "TTS 404/405 ... no /tts endpoint": start
+  `pocket-tts serve --port 8001` and run `TTS_URL=http://localhost:8001/tts npm run make -- ...`.
+- Contact sheet only: `npm run contact-sheet -- projects/<id>` (bundles once; needs
+  audio timings, so run make through the audio step first).
+
+## Look: light theme only (user decision, Nov 2026)
+
+- Palette lives ONLY in `src/theme.ts`: ivory ground, white cards, terracotta
+  accent, Inter. Never hard-code a hex color or font in a component.
+- `theme.line` (warm grey, about 2:1 on ivory) is for borders, arrows, baselines
+  and dim states, NEVER for text. Text uses `theme.text` or `theme.muted`.
+- `theme.accent` is for shapes and very large numerals; small emphasis text uses
+  `theme.accent2` (deep terracotta, better contrast).
+- Flat and minimal: soft `theme.shadow`, hairline borders, no glows, no gradients,
+  no dark backgrounds. Code and trace syntax colors use shiki `github-light`.
+- Any visual change needs stills at the maximum limits for every scene type it
+  touches (`npm run contact-sheet` on m6-gate, m7-gate, m8-gate and a project with
+  stat, chart, flow and bullets), then the user's OK.
+
+## Writing a good video (all topics)
+
+- Match the scene to the idea: a path or branches is a `graph`; an ordered process is
+  a `flow`; a list of facts is `bullets`; one number is a `stat`; a few numbers are a
+  `chart`; real code is `code` then `trace`. Do not use bullets for everything.
+- The validator rejects the same scene type three times in a row: alternate types.
+- Titles: one idea, at most 6 words. Bullets: parallel phrasing, at most 4 per scene
+  reads best. Narration: one idea per scene, 12 to 60 words, spoken English.
+- Graph labels must be short: about 7 nodes need labels of 9 characters or fewer to
+  stay above the 28 px floor; drop a node rather than shrinking text. Flow items are
+  24 characters at most, bullet items 48.
+- System or product explainer story: title -> big-picture graph (stepped) -> how the
+  key part works (flow) -> numbers or rules (stat, chart, bullets) -> differences or
+  edge cases (bullets) -> where things stand (bullets). 6 to 10 scenes, 60 to 120 s.
+- History, phases, roadmaps, "what happened when": use a `timeline` (2-6 events; one
+  step per event, with `when`, `label`, optional `detail`).
+- Request flows, protocols, who-calls-whom in order: use a `sequence` (actors across
+  the top, one message per arrow, reveal two or three messages per step). Use a
+  `graph` when the shape is branches and loops rather than a conversation.
+- Comparing things: use a `table` (features as rows, options as columns, `yes`/`no`
+  cells for presence). One step per row or per column. Keep cells short (36 chars);
+  put long explanations in bullets. Say "version one" and "version two" in
+  narration, not "V1" and "V2".
+
+## Facts about a codebase or system (never guess)
+
+- Before writing scenes, read the real code or docs and list each claim with its
+  source (file and function) for the user. Docs can be stale: confirm anything that
+  matters against the current code, and say when you did not.
+- Never state what code does that you did not read. A past video wrongly said "the
+  model never sets the score" when the code let it nudge by two points: check
+  exact limits, defaults and exceptions before they go into narration.
+- Do not touch the project being described (it may have uncommitted work). Read only.
+
+## Editing delivered videos
+
+- `projects/*/video.mp4` is gitignored, so an overwritten video cannot be restored from
+  git. Before re-rendering any delivered video, copy it to
+  `out/pre-theme-renders/<id>.mp4` (gitignored, local) or ask the user.
+- Projects whose audio was made with another voice (m5-steps, m6-gate, m7-gate,
+  m8-gate use marius) are left as they are; never re-synthesize them in a different
+  voice without the user asking.

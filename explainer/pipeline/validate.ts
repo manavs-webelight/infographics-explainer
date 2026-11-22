@@ -7,6 +7,7 @@
 import {readFileSync} from 'node:fs';
 import {ScriptSchema} from '../schema/scene-schema.ts';
 import {fitAdvice, MIN_FONT, type LayoutNode, type LayoutEdge} from '../src/graph-layout.ts';
+import {labelMaxChars} from '../src/sequence-layout.ts';
 
 type Json = Record<string, unknown> | unknown[] | string | number | boolean | null;
 type PathSeg = string | number;
@@ -391,6 +392,69 @@ export function semanticErrors(script: Record<string, unknown>): string[] {
       if (s.traceHash !== live)
         errors.push(`${owner}: trace is STALE (code, entry or args changed) - re-run the trace step (npm run make)`);
     }
+  });
+
+  scenes.forEach((s, i) => {
+    if (s.type !== 'table') return;
+    const owner = `scenes[${i}]`;
+    const columns = (s.columns ?? []) as unknown[];
+    const rows = (s.rows ?? []) as unknown[][];
+    rows.forEach((cells, j) => {
+      if (cells.length !== columns.length)
+        errors.push(`${owner}.rows[${j}]: has ${cells.length} cells, expected ${columns.length} (one per column)`);
+    });
+    ((s.steps ?? []) as Array<Record<string, unknown>>).forEach((st, k) => {
+      if (st.row === undefined && st.col === undefined)
+        errors.push(`${owner}.steps[${k}]: set row, col or both (what should be highlighted?)`);
+      if (st.row !== undefined && Number(st.row) > rows.length)
+        errors.push(`${owner}.steps[${k}].row: row ${String(st.row)} does not exist (table has ${rows.length} rows)`);
+      if (st.col !== undefined && Number(st.col) > columns.length)
+        errors.push(`${owner}.steps[${k}].col: column ${String(st.col)} does not exist (table has ${columns.length} columns)`);
+    });
+  });
+
+  scenes.forEach((s, i) => {
+    if (s.type !== 'sequence') return;
+    const owner = `scenes[${i}]`;
+    const actors = (s.actors ?? []) as Array<Record<string, unknown>>;
+    const messages = (s.messages ?? []) as Array<Record<string, unknown>>;
+    const ids = actors.map((a) => String(a.id));
+    const dup = ids.filter((x, k) => ids.indexOf(x) !== k);
+    for (const d of [...new Set(dup)]) errors.push(`${owner}: duplicate actor id "${d}"`);
+    const spacing = actors.length > 1 ? 1440 / (actors.length - 1) : 1440;
+    messages.forEach((m, k) => {
+      const from = ids.indexOf(String(m.from));
+      const to = ids.indexOf(String(m.to));
+      let ok = true;
+      for (const [side, at] of [['from', from], ['to', to]] as const) {
+        if (at < 0) {
+          errors.push(`${owner}.messages[${k}]: ${side} id "${String(m[side])}" does not name an actor`);
+          ok = false;
+        }
+      }
+      if (!ok) return;
+      if (from === to) {
+        errors.push(`${owner}.messages[${k}]: a message must go between two different actors`);
+        return;
+      }
+      const max = labelMaxChars(Math.abs(from - to) * spacing);
+      const len = String(m.label).length;
+      if (len > max)
+        errors.push(`${owner}.messages[${k}].label: ${len} characters, but at most ${max} fit between "${String(m.from)}" and "${String(m.to)}" (shorten it, or move the actors closer)`);
+    });
+    let prev = 0;
+    const steps = (s.steps ?? []) as Array<Record<string, unknown>>;
+    steps.forEach((st, k) => {
+      const t = Number(st.toMessage);
+      if (t <= prev)
+        errors.push(`${owner}.steps[${k}].toMessage: ${t} does not increase (previous step ended at ${prev})`);
+      if (t > messages.length)
+        errors.push(`${owner}.steps[${k}].toMessage: ${t} exceeds the ${messages.length} messages`);
+      prev = Math.max(prev, t);
+    });
+    const lastTo = Number(steps[steps.length - 1]?.toMessage ?? 0);
+    if (lastTo !== messages.length)
+      errors.push(`${owner}: the last step must end at message ${messages.length} (it ends at ${lastTo}); every message must be explained`);
   });
 
   const empties: string[] = [];

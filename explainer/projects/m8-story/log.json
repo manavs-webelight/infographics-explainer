@@ -1,6 +1,6 @@
 {
   "id": "m8-story",
-  "createdAt": "2026-11-17T15:43:03.731Z",
+  "createdAt": "2026-11-22T19:49:25.068Z",
   "voice": "alba",
   "draft": false,
   "force": false,
@@ -9,12 +9,12 @@
     {
       "name": "setup",
       "status": "done",
-      "seconds": 0.3
+      "seconds": 0
     },
     {
       "name": "script",
       "status": "skipped",
-      "seconds": 0.3
+      "seconds": 0
     },
     {
       "name": "highlight",
@@ -29,12 +29,12 @@
     {
       "name": "audio",
       "status": "cached",
-      "seconds": 9.7
+      "seconds": 1
     },
     {
       "name": "render",
       "status": "done",
-      "seconds": 1105.3
+      "seconds": 110
     }
   ],
   "retries": 0,

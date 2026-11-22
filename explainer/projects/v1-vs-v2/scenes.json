@@ -1,0 +1,226 @@
+{
+  "title": "V1 versus V2 review bot",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "V1 versus V2 review bot",
+      "subtitle": "Same webhook, two different pipelines",
+      "narration": "Both versions of the review bot answer the same merge request events. This video shows where they differ, and why.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 6.28,
+      "durationInFrames": 223
+    },
+    {
+      "type": "bullets",
+      "title": "What both versions share",
+      "items": [
+        "GitHub and GitLab support",
+        "The same webhook and credentials",
+        "The same security scanner",
+        "One summary comment per review"
+      ],
+      "narration": "Both versions support GitHub and GitLab. They share the webhook, the credentials, the security scanner, and they post a summary comment.",
+      "audioFile": "audio/scene-1.wav",
+      "audioSeconds": 7.72,
+      "durationInFrames": 266
+    },
+    {
+      "type": "graph",
+      "title": "Where the paths split",
+      "direction": "LR",
+      "nodes": [
+        {
+          "id": "hook",
+          "label": "Webhook",
+          "kind": "start"
+        },
+        {
+          "id": "route",
+          "label": "Pipeline?",
+          "kind": "decision"
+        },
+        {
+          "id": "v1",
+          "label": "V1 path",
+          "kind": "process"
+        },
+        {
+          "id": "v2",
+          "label": "V2 path",
+          "kind": "process"
+        },
+        {
+          "id": "note",
+          "label": "MR note",
+          "kind": "end"
+        }
+      ],
+      "edges": [
+        {
+          "from": "hook",
+          "to": "route"
+        },
+        {
+          "from": "route",
+          "to": "v1",
+          "label": "v1"
+        },
+        {
+          "from": "route",
+          "to": "v2",
+          "label": "v2"
+        },
+        {
+          "from": "v1",
+          "to": "note"
+        },
+        {
+          "from": "v2",
+          "to": "note"
+        }
+      ],
+      "steps": [
+        {
+          "narration": "Every merge request event arrives at the same webhook, whichever version the repository uses.",
+          "focus": [
+            "hook",
+            "hook->route"
+          ],
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 5.4,
+          "startFrame": 16,
+          "frames": 162
+        },
+        {
+          "narration": "The repository setting decides the path. Version one code never checks this setting at all.",
+          "focus": [
+            "route",
+            "route->v1"
+          ],
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 5.24,
+          "startFrame": 184,
+          "frames": 158
+        },
+        {
+          "narration": "Repositories set to version two never enter version one code. They take their own path, end to end.",
+          "focus": [
+            "route->v2",
+            "v2"
+          ],
+          "audioFile": "audio/scene-2-step-2.wav",
+          "audioSeconds": 6.12,
+          "startFrame": 348,
+          "frames": 184
+        },
+        {
+          "narration": "Either way, the result lands as a comment on the merge request.",
+          "focus": [
+            "v1->note",
+            "v2->note",
+            "note"
+          ],
+          "audioFile": "audio/scene-2-step-3.wav",
+          "audioSeconds": 3.88,
+          "startFrame": 538,
+          "frames": 117
+        }
+      ],
+      "durationInFrames": 673
+    },
+    {
+      "type": "bullets",
+      "title": "Context version one builds",
+      "items": [
+        "Git diff and a knowledge graph",
+        "Jira ticket context",
+        "The previous review",
+        "A security scan"
+      ],
+      "narration": "Version one reads the diff, a knowledge graph of the code, the Jira ticket, and the previous review of the same merge request.",
+      "audioFile": "audio/scene-3.wav",
+      "audioSeconds": 6.92,
+      "durationInFrames": 242
+    },
+    {
+      "type": "flow",
+      "title": "Context version two builds",
+      "steps": [
+        "Changed lines",
+        "Code that calls them",
+        "Files in risk order",
+        "Scans"
+      ],
+      "narration": "Version two builds its own context from the changed lines, the code that calls them, the files in risk order, and a security and dependency scan. It has no knowledge graph and no Jira.",
+      "audioFile": "audio/scene-4.wav",
+      "audioSeconds": 10.04,
+      "durationInFrames": 336
+    },
+    {
+      "type": "bullets",
+      "title": "How the score is set",
+      "items": [
+        "Version one: out of ten, set by the model",
+        "Version two: out of one hundred, set by code",
+        "Version two: the model nudges it by two at most",
+        "Version two: counts come from database rows"
+      ],
+      "narration": "Version one asks the model for a score out of ten. Version two computes a score out of one hundred from the issues in the database, and the model can only nudge it by two points.",
+      "audioFile": "audio/scene-5.wav",
+      "audioSeconds": 9.4,
+      "durationInFrames": 316
+    },
+    {
+      "type": "stat",
+      "value": 80,
+      "suffix": "%",
+      "label": "Files version two must inspect before submitting",
+      "narration": "Version two refuses to submit until it has inspected at least eighty percent of the risk ranked files. Version one has no such gate.",
+      "audioFile": "audio/scene-6.wav",
+      "audioSeconds": 8.12,
+      "durationInFrames": 278
+    },
+    {
+      "type": "bullets",
+      "title": "Reliability",
+      "items": [
+        "Version one: a Redis lock per merge request",
+        "Version two: one active job per merge request",
+        "Version two: resumes after a worker crash",
+        "Version two: tracks tokens and cost per run"
+      ],
+      "narration": "Version one uses a Redis lock. Version two keeps one active job per merge request in the database, resumes after a crash, and tracks tokens and cost for each run.",
+      "audioFile": "audio/scene-7.wav",
+      "audioSeconds": 9.56,
+      "durationInFrames": 321
+    },
+    {
+      "type": "flow",
+      "title": "Features only one version has",
+      "steps": [
+        "Fix bot (version one)",
+        "Triage (version two)",
+        "Verify (version two)",
+        "Shadow (version two)"
+      ],
+      "narration": "Only version one has the fix bot, which writes and pushes fixes. Only version two lets a person triage an issue, and it runs shadow comparisons.",
+      "audioFile": "audio/scene-8.wav",
+      "audioSeconds": 8.36,
+      "durationInFrames": 285
+    },
+    {
+      "type": "bullets",
+      "title": "Where things stand",
+      "items": [
+        "Both pipelines are live today",
+        "Each repository is served by one of them",
+        "Shadow mode runs version two without posting",
+        "Version two is not a full replacement yet"
+      ],
+      "narration": "Both pipelines are live today. Each repository is served by one of them, and shadow mode lets version two run quietly beside version one before any switch.",
+      "audioFile": "audio/scene-9.wav",
+      "audioSeconds": 8.92,
+      "durationInFrames": 314
+    }
+  ]
+}

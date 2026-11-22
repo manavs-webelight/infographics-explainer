@@ -12,7 +12,7 @@ interface FixtureCase {
 
 const cases: FixtureCase[] = [
   {file: 'valid.json', expectOk: true},
-  {file: 'wrong-type.json', expectOk: false, expect: ['unknown scene type "timeline"']},
+  {file: 'wrong-type.json', expectOk: false, expect: ['unknown scene type "carousel"']},
   {file: 'missing-field.json', expectOk: false, expect: ['scenes[1].label']},
   {file: 'too-many-items.json', expectOk: false, expect: ['scenes[3].steps: must have at most 5 items (got 7)']},
   {file: 'over-long-text.json', expectOk: false, expect: ['scenes[0].text: must be at most 60 characters (got ']},
@@ -53,6 +53,23 @@ const cases: FixtureCase[] = [
   {file: 'trace-nonmonotone.json', expectOk: false, expect: ['does not increase']},
   {file: 'trace-exceeds.json', expectOk: false, expect: ['exceeds the 2 states']},
   {file: 'trace-stale.json', expectOk: false, expect: ['STALE']},
+  {file: 'table-valid.json', expectOk: true},
+  {file: 'table-ragged-row.json', expectOk: false, expect: ['scenes[1].rows[2]: has 2 cells, expected 3']},
+  {file: 'table-bad-focus.json', expectOk: false,
+   expect: ['scenes[1].steps[1].row: row 5 does not exist (table has 4 rows)',
+            'scenes[1].steps[2].col: column 4 does not exist (table has 3 columns)']},
+  {file: 'table-no-focus.json', expectOk: false, expect: ['scenes[1].steps[0]: set row, col or both']},
+  {file: 'table-cell-too-long.json', expectOk: false, expect: ['scenes[1].rows[0][1]: must be at most 36 characters']},
+  {file: 'sequence-valid.json', expectOk: true},
+  {file: 'sequence-bad-actor.json', expectOk: false, expect: ['scenes[1].messages[1]: to id "cache" does not name an actor']},
+  {file: 'sequence-label-too-long.json', expectOk: false, expect: ['scenes[1].messages[0].label: 30 characters, but at most 19 fit']},
+  {file: 'sequence-bad-steps.json', expectOk: false,
+   expect: ['scenes[1].steps[1].toMessage: 2 does not increase', 'scenes[1]: the last step must end at message 4']},
+  {file: 'timeline-valid.json', expectOk: true},
+  {file: 'timeline-too-many.json', expectOk: false, expect: ['scenes[1].steps: must have at most 6 items (got 7)']},
+  {file: 'timeline-label-long.json', expectOk: false, expect: ['scenes[1].steps[0].label: must be at most 36 characters (got 39)']},
+  {file: 'timeline-missing-when.json', expectOk: false, expect: ['scenes[1].steps[1].when: required field missing']},
+  {file: 'timeline-narration-both.json', expectOk: false, expect: ['scenes[1]: provide either narration or steps, not both']},
 ];
 
 function runValidator(file: string): {code: number; output: string} {

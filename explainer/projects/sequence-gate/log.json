@@ -1,0 +1,52 @@
+{
+  "id": "sequence-gate",
+  "createdAt": "2026-11-22T20:10:37.603Z",
+  "voice": "alba",
+  "draft": true,
+  "force": false,
+  "concept": null,
+  "steps": [
+    {
+      "name": "setup",
+      "status": "done",
+      "seconds": 0
+    },
+    {
+      "name": "script",
+      "status": "skipped",
+      "seconds": 0
+    },
+    {
+      "name": "highlight",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "trace",
+      "status": "cached",
+      "seconds": 0
+    },
+    {
+      "name": "audio",
+      "status": "cached",
+      "seconds": 0.7
+    },
+    {
+      "name": "render",
+      "status": "done",
+      "seconds": 40.7
+    },
+    {
+      "name": "sheet",
+      "status": "done",
+      "seconds": 7.3
+    }
+  ],
+  "retries": 0,
+  "claims": [],
+  "output": "projects/sequence-gate/video.mp4",
+  "totalFrames": 1436,
+  "totalSeconds": 47.9,
+  "status": "ok",
+  "summary": "done"
+}

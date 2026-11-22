@@ -65,7 +65,7 @@ export const Code: React.FC<any> = (props) => {
       {title && (
         <div style={{position: 'absolute', top: 64, left: 120, width: 1680, opacity: heading}}>
           <div style={{width: 72, height: 8, background: theme.accent2, borderRadius: 4, marginBottom: 18}} />
-          <div style={{fontSize: 64, fontWeight: 800, color: theme.text}}>{title}</div>
+          <div style={{fontSize: 64, fontWeight: 700, color: theme.text}}>{title}</div>
         </div>
       )}
       <div style={{position: 'absolute', top: layout.top, left: layout.left, width: layout.right - layout.left}}>
@@ -82,7 +82,7 @@ export const Code: React.FC<any> = (props) => {
                 display: 'flex',
                 alignItems: 'center',
                 opacity,
-                background: isOn ? theme.card : 'transparent',
+                background: isOn ? theme.soft : 'transparent',
                 borderRadius: 10,
                 transform: `translateX(${(1 - grow) * -14}px)`,
               }}

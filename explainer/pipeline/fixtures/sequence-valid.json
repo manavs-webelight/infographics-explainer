@@ -1,0 +1,78 @@
+{
+ "title": "Sequence test",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "One Request, In Order",
+   "narration": "A short test of the sequence scene, showing who talks to whom, step by step."
+  },
+  {
+   "type": "sequence",
+   "title": "What happens on a request",
+   "actors": [
+    {
+     "id": "browser",
+     "label": "Browser"
+    },
+    {
+     "id": "api",
+     "label": "API server"
+    },
+    {
+     "id": "db",
+     "label": "Database"
+    }
+   ],
+   "messages": [
+    {
+     "from": "browser",
+     "to": "api",
+     "label": "Send the form"
+    },
+    {
+     "from": "api",
+     "to": "db",
+     "label": "Save the row"
+    },
+    {
+     "from": "db",
+     "to": "api",
+     "label": "Row saved"
+    },
+    {
+     "from": "api",
+     "to": "browser",
+     "label": "Show the new page"
+    }
+   ],
+   "steps": [
+    {
+     "toMessage": 1,
+     "narration": "The browser sends the filled in form to the API server."
+    },
+    {
+     "toMessage": 3,
+     "narration": "The server asks the database to save the row, and the database confirms it."
+    },
+    {
+     "toMessage": 4,
+     "narration": "Finally the server answers the browser with the new page."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Takeaways",
+   "steps": [
+    {
+     "item": "Read it top to bottom",
+     "narration": "Time runs from the top of the diagram down to the bottom."
+    },
+    {
+     "item": "Arrows are messages",
+     "narration": "Each arrow is one message from one actor to another actor."
+    }
+   ]
+  }
+ ]
+}

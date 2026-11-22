@@ -1,0 +1,214 @@
+{
+  "title": "Sequence gate",
+  "scenes": [
+    {
+      "type": "title",
+      "text": "Sequence Scene Gate",
+      "narration": "A short gate for the new sequence scene, shown at its largest size and at a normal size.",
+      "audioFile": "audio/scene-0.wav",
+      "audioSeconds": 4.68,
+      "durationInFrames": 175
+    },
+    {
+      "type": "sequence",
+      "title": "One review across five parts",
+      "actors": [
+        {
+          "id": "webhook",
+          "label": "Webhook"
+        },
+        {
+          "id": "router",
+          "label": "Router"
+        },
+        {
+          "id": "worker",
+          "label": "Review worker"
+        },
+        {
+          "id": "agent",
+          "label": "Agent"
+        },
+        {
+          "id": "poster",
+          "label": "Comment poster"
+        }
+      ],
+      "messages": [
+        {
+          "from": "webhook",
+          "to": "router",
+          "label": "Merge request event"
+        },
+        {
+          "from": "router",
+          "to": "worker",
+          "label": "Queue a review"
+        },
+        {
+          "from": "worker",
+          "to": "agent",
+          "label": "Start the session"
+        },
+        {
+          "from": "agent",
+          "to": "worker",
+          "label": "Issues and summary"
+        },
+        {
+          "from": "worker",
+          "to": "poster",
+          "label": "Post the comment"
+        },
+        {
+          "from": "poster",
+          "to": "webhook",
+          "label": "Merge request now has a comment"
+        },
+        {
+          "from": "worker",
+          "to": "router",
+          "label": "Report the result"
+        },
+        {
+          "from": "router",
+          "to": "webhook",
+          "label": "Reply with a status"
+        }
+      ],
+      "steps": [
+        {
+          "toMessage": 2,
+          "narration": "A merge request event reaches the router, which queues a review for a worker.",
+          "audioFile": "audio/scene-1-step-0.wav",
+          "audioSeconds": 4.04,
+          "startFrame": 16,
+          "frames": 122
+        },
+        {
+          "toMessage": 4,
+          "narration": "The worker starts an agent session, and the agent sends back its issues and a summary.",
+          "audioFile": "audio/scene-1-step-1.wav",
+          "audioSeconds": 4.92,
+          "startFrame": 144,
+          "frames": 148
+        },
+        {
+          "toMessage": 6,
+          "narration": "The worker hands the result to the poster, which comments on the merge request.",
+          "audioFile": "audio/scene-1-step-2.wav",
+          "audioSeconds": 4.44,
+          "startFrame": 298,
+          "frames": 134
+        },
+        {
+          "toMessage": 7,
+          "narration": "Then the worker reports the finished result back to the router.",
+          "audioFile": "audio/scene-1-step-3.wav",
+          "audioSeconds": 3.16,
+          "startFrame": 438,
+          "frames": 95
+        },
+        {
+          "toMessage": 8,
+          "narration": "Lastly the router replies to the webhook with a status for the pipeline.",
+          "audioFile": "audio/scene-1-step-4.wav",
+          "audioSeconds": 4.12,
+          "startFrame": 539,
+          "frames": 124
+        }
+      ],
+      "durationInFrames": 681
+    },
+    {
+      "type": "sequence",
+      "title": "What happens on a request",
+      "actors": [
+        {
+          "id": "browser",
+          "label": "Browser"
+        },
+        {
+          "id": "api",
+          "label": "API server"
+        },
+        {
+          "id": "db",
+          "label": "Database"
+        }
+      ],
+      "messages": [
+        {
+          "from": "browser",
+          "to": "api",
+          "label": "Send the form"
+        },
+        {
+          "from": "api",
+          "to": "db",
+          "label": "Save the row"
+        },
+        {
+          "from": "db",
+          "to": "api",
+          "label": "Row saved"
+        },
+        {
+          "from": "api",
+          "to": "browser",
+          "label": "Show the new page"
+        }
+      ],
+      "steps": [
+        {
+          "toMessage": 1,
+          "narration": "The browser sends the filled in form to the API server.",
+          "audioFile": "audio/scene-2-step-0.wav",
+          "audioSeconds": 3.24,
+          "startFrame": 16,
+          "frames": 98
+        },
+        {
+          "toMessage": 3,
+          "narration": "The server asks the database to save the row, and the database confirms it.",
+          "audioFile": "audio/scene-2-step-1.wav",
+          "audioSeconds": 4.2,
+          "startFrame": 120,
+          "frames": 126
+        },
+        {
+          "toMessage": 4,
+          "narration": "Finally the server answers the browser with the new page.",
+          "audioFile": "audio/scene-2-step-2.wav",
+          "audioSeconds": 3,
+          "startFrame": 252,
+          "frames": 90
+        }
+      ],
+      "durationInFrames": 360
+    },
+    {
+      "type": "bullets",
+      "title": "Takeaways",
+      "steps": [
+        {
+          "item": "Read top to bottom",
+          "narration": "Time runs from the top of the diagram down to the bottom.",
+          "audioFile": "audio/scene-3-step-0.wav",
+          "audioSeconds": 3,
+          "startFrame": 16,
+          "frames": 90
+        },
+        {
+          "item": "Arrows are messages",
+          "narration": "Each arrow is one message from one actor to another actor.",
+          "audioFile": "audio/scene-3-step-1.wav",
+          "audioSeconds": 3.8,
+          "startFrame": 112,
+          "frames": 114
+        }
+      ],
+      "durationInFrames": 256
+    }
+  ]
+}

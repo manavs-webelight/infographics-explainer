@@ -126,6 +126,85 @@ export const TraceSceneSchema = z.object({
   words: GraphSceneSchema.shape.words,
 });
 
+// Table scene (comparison / matrix). The whole table is visible from the first
+// frame; each step focuses a data row, a column, or one cell (row + col, both
+// 1-based; column 1 is the row-label column). At least one of row/col per step
+// (checked semantically). Scene-level narration is not allowed: steps only.
+// A cell that is exactly "yes" or "no" renders a check or dash icon.
+export const TableStepSchema = z.object({
+  narration: narrationStr,
+  row: z.number().int().min(1).max(6).optional(),
+  col: z.number().int().min(1).max(4).optional(),
+  ...stepTiming,
+});
+
+export const TableSceneSchema = z.object({
+  type: z.literal('table'),
+  title: z.string().max(50).optional(),
+  columns: z.array(z.string().min(1).max(20)).min(2).max(4),
+  rows: z.array(z.array(z.string().min(1).max(36)).min(2).max(4)).min(2).max(6),
+  steps: z.array(TableStepSchema).min(2).max(8),
+  durationInFrames: z.number().int().positive().optional(),
+  audioSeconds: z.number().optional(),
+  audioFile: z.string().optional(),
+  words: GraphSceneSchema.shape.words,
+});
+
+// Sequence diagram scene: actors across the top, messages in time order.
+// Each step reveals every message up to toMessage (1-based, strictly
+// increasing; the last step must reach the final message - semantic check).
+// Label length is limited by the distance between the two lifelines; the
+// validator uses the shared src/sequence-layout.ts to enforce that.
+export const SequenceActorSchema = z.object({
+  id: z.string().min(1).max(20),
+  label: z.string().min(1).max(14),
+});
+
+export const SequenceMessageSchema = z.object({
+  from: z.string().min(1).max(20),
+  to: z.string().min(1).max(20),
+  label: z.string().min(1).max(32),
+});
+
+export const SequenceStepSchema = z.object({
+  narration: narrationStr,
+  toMessage: z.number().int().min(1).max(8),
+  ...stepTiming,
+});
+
+export const SequenceSceneSchema = z.object({
+  type: z.literal('sequence'),
+  title: z.string().max(50).optional(),
+  actors: z.array(SequenceActorSchema).min(2).max(5),
+  messages: z.array(SequenceMessageSchema).min(2).max(8),
+  steps: z.array(SequenceStepSchema).min(2).max(8),
+  durationInFrames: z.number().int().positive().optional(),
+  audioSeconds: z.number().optional(),
+  audioFile: z.string().optional(),
+  words: GraphSceneSchema.shape.words,
+});
+
+// Timeline scene: events along a horizontal axis, alternating above and below.
+// Each STEP is one event (when + label + optional detail) with its own
+// narration, so every event is explained by construction. 2-6 events.
+export const TimelineStepSchema = z.object({
+  when: z.string().min(1).max(14),
+  label: z.string().min(1).max(36),
+  detail: z.string().min(1).max(48).optional(),
+  narration: narrationStr,
+  ...stepTiming,
+});
+
+export const TimelineSceneSchema = z.object({
+  type: z.literal('timeline'),
+  title: z.string().max(50).optional(),
+  steps: z.array(TimelineStepSchema).min(2).max(6),
+  durationInFrames: z.number().int().positive().optional(),
+  audioSeconds: z.number().optional(),
+  audioFile: z.string().optional(),
+  words: GraphSceneSchema.shape.words,
+});
+
 export const SceneSchema = z.discriminatedUnion('type', [
   z.object({
     ...base,
@@ -175,6 +254,9 @@ export const SceneSchema = z.discriminatedUnion('type', [
   GraphSceneSchema,
   CodeSceneSchema,
   TraceSceneSchema,
+  TableSceneSchema,
+  SequenceSceneSchema,
+  TimelineSceneSchema,
 ]);
 
 export const ScriptSchema = z.object({
@@ -190,6 +272,9 @@ export type GraphEdge = z.infer<typeof GraphEdgeSchema>;
 export type GraphStep = z.infer<typeof GraphStepSchema>;
 export type CodeStep = z.infer<typeof CodeStepSchema>;
 export type BulletStep = z.infer<typeof BulletStepSchema>;
+export type TableStep = z.infer<typeof TableStepSchema>;
+export type SequenceStep = z.infer<typeof SequenceStepSchema>;
+export type TimelineStep = z.infer<typeof TimelineStepSchema>;
 
 // Scene type names, for error messages and the catalog.
 export const sceneTypes = SceneSchema.options.map((o) => o.shape.type.value);

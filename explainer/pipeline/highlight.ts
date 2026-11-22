@@ -6,7 +6,7 @@ import {readFileSync, writeFileSync, renameSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {codeToTokens, type BundledLanguage} from 'shiki';
 
-const THEME = 'github-dark';
+const THEME = 'github-light';
 
 export const injectTokens = async (projectDir: string): Promise<number> => {
   const scenesPath = `${projectDir}/scenes.json`;
@@ -18,7 +18,7 @@ export const injectTokens = async (projectDir: string): Promise<number> => {
     if (scene.type !== 'code' && scene.type !== 'trace') continue;
     const lang = String(scene.lang ?? 'python');
     const code = String(scene.code ?? '');
-    const hash = createHash('sha256').update(code + lang).digest('hex').slice(0, 16);
+    const hash = createHash('sha256').update(code + lang + THEME).digest('hex').slice(0, 16);
     if (scene.tokens && scene.codeHash === hash) continue;
     // schema restricts lang to this bundled set
     const res = await codeToTokens(code, {lang: lang as BundledLanguage, theme: THEME});

@@ -32,6 +32,12 @@ export async function synthesize(
       `TTS request to ${TTS_URL} failed (${(e as Error).message}) - is \`pocket-tts serve\` running?`,
     );
   }
+  if (res.status === 404 || res.status === 405) {
+    throw new Error(
+      `TTS ${res.status} from ${TTS_URL}: that server has no /tts endpoint - another service probably owns this port. ` +
+        `Start pocket-tts on a free port (pocket-tts serve --port 8001) and run with TTS_URL=http://localhost:8001/tts.`,
+    );
+  }
   if (!res.ok) throw new Error(`TTS ${res.status}: ${await res.text()}`);
   const rawPath = outPath + '.raw.wav';
   await writeFile(rawPath, Buffer.from(await res.arrayBuffer()));

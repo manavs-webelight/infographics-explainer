@@ -4,7 +4,9 @@
 // sheet before every final render. Requires scenes.json WITH pipeline timings.
 import {readFileSync, mkdirSync, rmSync, existsSync, renameSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {join} from 'node:path';
+import {join, resolve} from 'node:path';
+import {bundle} from '@remotion/bundler';
+import {openBrowser, renderStill, selectComposition} from '@remotion/renderer';
 
 const dir = process.argv[2];
 if (!dir) {
@@ -40,7 +42,7 @@ scenes.forEach((s, i) => {
       const sf = g + Number(st.startFrame ?? 0);
       shots.push({
         frame: Math.min(sf + 20, g + dur - 13),
-        label: `scene ${i} step ${String(st.item ?? (Array.isArray(st.focus) ? st.focus.slice(0, 2).join(' ') : ''))} start @${sf}`,
+        label: `scene ${i} step ${String(st.item ?? st.when ?? (Array.isArray(st.focus) ? st.focus.slice(0, 2).join(' ') : st.toMessage !== undefined ? `to message ${String(st.toMessage)}` : st.row !== undefined || st.col !== undefined ? `row ${String(st.row ?? '-')} col ${String(st.col ?? '-')}` : ''))} start @${sf}`,
       });
     }
   }
@@ -57,21 +59,17 @@ if (existsSync(sheet)) rmSync(sheet); // never trust a stale sheet
 const cols = 4;
 const rows = Math.ceil(shots.length / cols);
 const FONT = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf';
-shots.forEach((shot, n) => {
+// Bundle ONCE and reuse ONE browser for every still (was: one `remotion still`
+// process, and so one full bundle, per shot).
+const serveUrl = await bundle({entryPoint: resolve('src/index.ts'), publicDir: resolve(dir)});
+const browser = await openBrowser('chrome', {chromiumOptions: {gl: 'swiftshader'}});
+const inputProps = script as unknown as Record<string, unknown>;
+const composition = await selectComposition({serveUrl, id: 'Video', inputProps, puppeteerInstance: browser});
+for (const [n, shot] of shots.entries()) {
   const out = join(tmp, `${String(n).padStart(3, '0')}.png`);
-  execFileSync(
-    'npx',
-    [
-      'remotion', 'still', 'src/index.ts', 'Video', out,
-      `--frame=${shot.frame}`,
-      `--props=${scenesPath}`,
-      `--public-dir=${dir}`,
-      '--scale=0.5',
-    ],
-    {stdio: 'ignore'},
-  );
+  await renderStill({composition, serveUrl, frame: shot.frame, output: out, scale: 0.5, inputProps, puppeteerInstance: browser});
   // Burn the label INTO the tile so tile order can never be misread.
-  const label = `[${n}] ${shot.label}`.replace(/[\\:']/g, ' ');
+  const label = `[${n}] ${shot.label}`.replace(/[\\\\:']/g, ' ');
   execFileSync('ffmpeg', [
     '-y', '-v', 'error', '-i', out,
     '-vf',
@@ -80,7 +78,8 @@ shots.forEach((shot, n) => {
   ], {stdio: 'inherit'});
   renameSync(out + '.labelled.png', out);
   console.log(`[contact-sheet] ${n + 1}/${shots.length}: ${shot.label}`);
-});
+}
+await browser.close({silent: true});
 
 execFileSync('ffmpeg', [
   '-y', '-v', 'error',

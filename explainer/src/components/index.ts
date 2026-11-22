@@ -6,6 +6,9 @@ import {BarChart} from './BarChart';
 import {Graph} from './Graph';
 import {Code} from './Code';
 import {Trace} from './Trace';
+import {Table} from './Table';
+import {Sequence} from './Sequence';
+import {Timeline} from './Timeline';
 export const registry: Record<string, React.FC<any>> = {
   title: TitleCard,
   flow: Flow,
@@ -15,4 +18,7 @@ export const registry: Record<string, React.FC<any>> = {
   graph: Graph,
   code: Code,
   trace: Trace,
+  table: Table,
+  sequence: Sequence,
+  timeline: Timeline,
 };

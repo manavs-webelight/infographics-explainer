@@ -1,0 +1,72 @@
+{
+ "title": "Timeline test",
+ "scenes": [
+  {
+   "type": "title",
+   "text": "A Launch In Order",
+   "narration": "A short test of the timeline scene, showing events one after another along a line."
+  },
+  {
+   "type": "timeline",
+   "title": "A product launch in four weeks",
+   "steps": [
+    {
+     "when": "Week one",
+     "label": "Plan and scope",
+     "detail": "Agree the goals and the date",
+     "narration": "The first week is for planning, agreeing the goals, and fixing the launch date."
+    },
+    {
+     "when": "Week two",
+     "label": "Build the core",
+     "detail": "Ship the main flow end to end",
+     "narration": "In week two the team builds the core flow and gets it working from start to end."
+    },
+    {
+     "when": "Week three",
+     "label": "Test with users",
+     "detail": "Fix what the testers find",
+     "narration": "Week three puts the product in front of testers, and the team fixes what they find."
+    },
+    {
+     "when": "Week four",
+     "label": "Launch",
+     "detail": "Announce and watch the numbers",
+     "narration": "Finally the launch goes out, and the team watches the first numbers come in."
+    },
+    {
+     "when": "Week five",
+     "label": "Review",
+     "detail": "Look back",
+     "narration": "The fifth week looks back at what went well and what did not go well."
+    },
+    {
+     "when": "Week six",
+     "label": "Plan next",
+     "detail": "Pick the next goals",
+     "narration": "The sixth week picks the next goals and starts the cycle again."
+    },
+    {
+     "when": "Week seven",
+     "label": "Rest",
+     "detail": "Take a break",
+     "narration": "The seventh week is a short break before the next round of work begins."
+    }
+   ]
+  },
+  {
+   "type": "bullets",
+   "title": "Takeaways",
+   "steps": [
+    {
+     "item": "Read left to right",
+     "narration": "Time runs from the left end of the line to the right end."
+    },
+    {
+     "item": "One event at a time",
+     "narration": "Each event appears as it is explained, with the line filling up to it."
+    }
+   ]
+  }
+ ]
+}

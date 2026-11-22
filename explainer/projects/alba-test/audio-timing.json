@@ -7,7 +7,7 @@
     "durationInFrames": 160,
     "tail": 18,
     "marginFrames": 18,
-    "cached": false
+    "cached": true
   },
   {
     "scene": 1,
@@ -17,7 +17,7 @@
     "durationInFrames": 235,
     "tail": 18,
     "marginFrames": 18,
-    "cached": false
+    "cached": true
   },
   {
     "scene": 2,
@@ -27,6 +27,6 @@
     "durationInFrames": 213,
     "tail": 30,
     "marginFrames": 30,
-    "cached": false
+    "cached": true
   }
 ]

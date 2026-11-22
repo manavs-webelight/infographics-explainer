@@ -4,6 +4,6 @@ export const FocusDim: React.FC<{
   active: boolean;
   dim?: number;
   children: React.ReactNode;
-}> = ({active, dim = 0.35, children}) => (
+}> = ({active, dim = 0.55, children}) => (
   <div style={{opacity: active ? 1 : dim, width: '100%', height: '100%'}}>{children}</div>
 );

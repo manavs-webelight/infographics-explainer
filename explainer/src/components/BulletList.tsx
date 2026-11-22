@@ -19,7 +19,7 @@ const Item: React.FC<{text: string; delay: number; stagger: number; active?: boo
   const a = useIn(delay + stagger);
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: 28, fontSize: 56, marginBottom: 40, opacity: a, transform: `translateX(${(1 - a) * 60}px)`}}>
-      <CheckCircle2 size={64} color={active ? theme.accent2 : theme.good} />
+      <CheckCircle2 size={64} color={active ? theme.accent2 : theme.accent} />
       <span style={{color: active ? theme.accent2 : theme.text}}>{text}</span>
     </div>
   );
@@ -33,7 +33,7 @@ export const BulletList: React.FC<{
   const t = useIn(0);
   const stepped = !!steps && steps.length > 0;
   const {index} = useStep(stepped ? steps! : []);
-  const heading = <div style={{fontSize: 72, fontWeight: 800, marginBottom: 70, opacity: t}}>{title}</div>;
+  const heading = <div style={{fontSize: 72, fontWeight: 700, marginBottom: 70, opacity: t}}>{title}</div>;
 
   if (stepped) {
     return (

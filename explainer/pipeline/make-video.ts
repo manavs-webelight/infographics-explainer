@@ -115,7 +115,7 @@ function collectClaims(scenes: Array<Record<string, unknown>>) {
 async function runStep(name: string, fn: () => StepLog['status'] | Promise<StepLog['status']>) {
   const t0 = Date.now();
   const status = await fn();
-  steps.push({name, status, seconds: Math.round(((Date.now() - t0) / 100) * 10) / 10});
+  steps.push({name, status, seconds: Math.round((Date.now() - t0) / 100) / 10});
 }
 
 function finish(summary: string) {
@@ -283,6 +283,14 @@ async function main() {
     console.log(`[render] ok, ${draft ? 'draft' : 'final'} -> ${videoPath}`);
     return 'done';
   });
+
+  // ---- 4b. contact sheet (drafts only: the thing the user reviews before the final) ----
+  if (draft) {
+    await runStep('sheet', () => {
+      execFileSync('node', ['--no-warnings', 'pipeline/contact-sheet.ts', projectDir], {stdio: 'inherit'});
+      return 'done';
+    });
+  }
 
   // ---- 5. summary ----
   if (existsSync(`${projectDir}/audio-timing.json`)) {

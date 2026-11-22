@@ -1,0 +1,30 @@
+{
+ "type": "timeline",
+ "title": "A product launch in four weeks",
+ "steps": [
+  {
+   "when": "Week one",
+   "label": "Plan and scope",
+   "detail": "Agree the goals and the date",
+   "narration": "The first week is for planning, agreeing the goals, and fixing the launch date."
+  },
+  {
+   "when": "Week two",
+   "label": "Build the core",
+   "detail": "Ship the main flow end to end",
+   "narration": "In week two the team builds the core flow and gets it working from start to end."
+  },
+  {
+   "when": "Week three",
+   "label": "Test with users",
+   "detail": "Fix what the testers find",
+   "narration": "Week three puts the product in front of testers, and the team fixes what they find."
+  },
+  {
+   "when": "Week four",
+   "label": "Launch",
+   "detail": "Announce and watch the numbers",
+   "narration": "Finally the launch goes out, and the team watches the first numbers come in."
+  }
+ ]
+}

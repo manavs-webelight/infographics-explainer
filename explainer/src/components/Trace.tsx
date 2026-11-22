@@ -61,7 +61,7 @@ export const Trace: React.FC<any> = (props) => {
       {title && (
         <div style={{position: 'absolute', top: 64, left: 96, width: 1720, opacity: heading}}>
           <div style={{width: 72, height: 8, background: theme.accent, borderRadius: 4, marginBottom: 18}} />
-          <div style={{fontSize: 64, fontWeight: 800, color: theme.text}}>{title}</div>
+          <div style={{fontSize: 64, fontWeight: 700, color: theme.text}}>{title}</div>
         </div>
       )}
       {/* left: the code, with the CURRENT traced line highlighted */}
@@ -78,7 +78,7 @@ export const Trace: React.FC<any> = (props) => {
                 height: layout.rowH,
                 display: 'flex',
                 alignItems: 'center',
-                background: on ? theme.card : 'transparent',
+                background: on ? theme.soft : 'transparent',
                 borderRadius: 8,
               }}
             >
@@ -110,12 +110,13 @@ export const Trace: React.FC<any> = (props) => {
             left: layout.panelX,
             width: layout.panelW,
             background: theme.card,
-            border: `3px solid ${theme.accent}`,
+            border: `2px solid ${theme.line}`,
+            boxShadow: theme.shadow,
             borderRadius: 20,
             padding: '26px 34px',
           }}
         >
-          <div style={{fontSize: TRACE_HEAD_FONT, fontWeight: 700, color: theme.accent, marginBottom: 18, fontFamily: MONO}}>
+          <div style={{fontSize: TRACE_HEAD_FONT, fontWeight: 700, color: theme.accent2, marginBottom: 18, fontFamily: MONO}}>
             STATE {cur.n} · LINE {cur.line} · {cur.event.toUpperCase()}
           </div>
           {Object.entries(cur.vars).map(([k, v]) => {
@@ -134,7 +135,7 @@ export const Trace: React.FC<any> = (props) => {
             </div>
           )}
           {shown === steps[steps.length - 1]?.toState && trace?.result !== undefined && trace?.result !== null && (
-            <div style={{fontFamily: MONO, fontSize: TRACE_FONT, lineHeight: '46px', color: theme.good, fontWeight: 700}}>
+            <div style={{fontFamily: MONO, fontSize: TRACE_FONT, lineHeight: '46px', color: theme.accent2, fontWeight: 700}}>
               result {trace.result}
             </div>
           )}

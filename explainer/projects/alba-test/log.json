@@ -1,6 +1,6 @@
 {
   "id": "alba-test",
-  "createdAt": "2026-11-17T16:38:58.268Z",
+  "createdAt": "2026-11-22T19:47:46.280Z",
   "voice": "alba",
   "draft": false,
   "force": false,
@@ -9,12 +9,12 @@
     {
       "name": "setup",
       "status": "done",
-      "seconds": 0.1
+      "seconds": 0
     },
     {
       "name": "script",
       "status": "skipped",
-      "seconds": 0.1
+      "seconds": 0
     },
     {
       "name": "highlight",
@@ -28,13 +28,13 @@
     },
     {
       "name": "audio",
-      "status": "done",
-      "seconds": 53.8
+      "status": "cached",
+      "seconds": 0.2
     },
     {
       "name": "render",
       "status": "done",
-      "seconds": 237.9
+      "seconds": 23.6
     }
   ],
   "retries": 0,

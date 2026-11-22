@@ -9,8 +9,8 @@ export const StatCard: React.FC<{value: number; suffix?: string; label: string}>
   return (
     <Layout>
       <div style={{textAlign: 'center'}}>
-        <div style={{fontSize: 280, fontWeight: 900, color: theme.accent, opacity: a, transform: `scale(${0.85 + 0.15 * a})`}}>{n}{suffix}</div>
-        <div style={{fontSize: 64, color: theme.text, opacity: b}}>{label}</div>
+        <div style={{fontSize: 280, fontWeight: 700, letterSpacing: '-0.03em', color: theme.accent, opacity: a, transform: `scale(${0.85 + 0.15 * a})`}}>{n}{suffix}</div>
+        <div style={{fontSize: 64, color: theme.muted, opacity: b}}>{label}</div>
       </div>
     </Layout>
   );
