@@ -261,6 +261,7 @@ export const SceneSchema = z.discriminatedUnion('type', [
 
 export const ScriptSchema = z.object({
   title: z.string(),
+  captions: z.boolean().optional(), // write a video.srt next to the video (not burned in)
   scenes: z.array(SceneSchema).min(3).max(14),
 });
 

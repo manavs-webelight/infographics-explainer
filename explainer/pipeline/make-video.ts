@@ -25,6 +25,7 @@ import {injectTokens} from './highlight.ts';
 import {runTrace} from './trace.ts';
 import {createHash} from 'node:crypto';
 import {DEFAULT_VOICE} from './tts.ts';
+import {writeSrt} from './srt.ts';
 
 interface StepLog {
   name: string;
@@ -291,6 +292,10 @@ async function main() {
       return 'done';
     });
   }
+
+  // ---- 4c. subtitles file (only when scenes.json has "captions": true) ----
+  if ((JSON.parse(readFileSync(scenesPath, 'utf8')) as {captions?: boolean}).captions)
+    console.log(`[srt] ${writeSrt(projectDir)} captions -> ${projectDir}/video.srt`);
 
   // ---- 5. summary ----
   if (existsSync(`${projectDir}/audio-timing.json`)) {
